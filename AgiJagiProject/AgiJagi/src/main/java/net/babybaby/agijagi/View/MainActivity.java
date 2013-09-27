@@ -1,8 +1,10 @@
-package net.babybaby.agijagi;
+package net.babybaby.agijagi.View;
 
 import android.os.Bundle;
 import android.app.Activity;
 import android.view.Menu;
+
+import net.babybaby.agijagi.R;
 
 public class MainActivity extends Activity {
 
