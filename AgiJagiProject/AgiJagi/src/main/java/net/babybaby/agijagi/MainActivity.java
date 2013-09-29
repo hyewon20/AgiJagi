@@ -1,4 +1,4 @@
-package net.babybaby.agijagi.View;
+package net.babybaby.agijagi;
 
 import android.os.Bundle;
 import android.app.Activity;

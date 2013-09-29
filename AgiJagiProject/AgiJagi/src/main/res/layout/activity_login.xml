@@ -33,22 +33,22 @@
 
     </RelativeLayout>
 
-    <RelativeLayout android:id="@+id/login_button"
+    <RelativeLayout android:id="@+id/login_down"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/login_edit"
         android:layout_centerInParent="true"
         android:layout_marginTop="20dip">
 
-        <Button android:id="@+id/login_email"
+        <Button android:id="@+id/login_button"
             android:layout_width="200dip"
             android:layout_height="50dip"
             android:text="Log In"
             android:layout_centerHorizontal="true"/>
-        <Button android:id="@+id/login_password"
+        <Button android:id="@+id/login_unregist"
             android:layout_width="200dip"
             android:layout_height="50dip"
-            android:layout_below="@id/login_email"
+            android:layout_below="@id/login_button"
             android:text="둘러보기"
             android:layout_centerHorizontal="true"/>
 
