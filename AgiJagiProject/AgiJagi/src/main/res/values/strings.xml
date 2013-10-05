@@ -3,8 +3,9 @@
 <string name="app_name">아기자기</string>
 <string name="action_settings">Settings</string>
 <string-array name="planets_array">
+    <item>김냠냠</item>
+    <item>메인화면</item>
     <item>공지사항</item>
-    <item>피드백</item>
     <item>레시피 조회</item>
     <item>레시피 검색</item>
     <item>영양사/기관 검색</item>

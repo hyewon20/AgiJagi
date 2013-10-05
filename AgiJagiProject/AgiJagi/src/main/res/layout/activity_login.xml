@@ -22,13 +22,16 @@
     <EditText android:id="@+id/login_email"
         android:layout_width="250dip"
         android:layout_height="50dip"
-        android:hint="E-mail"
+        android:hint="ID"
+        android:text="flashilver"
         android:layout_centerHorizontal="true"/>
     <EditText android:id="@+id/login_password"
         android:layout_width="250dip"
         android:layout_height="50dip"
         android:layout_below="@id/login_email"
         android:hint="Password"
+        android:password="true"
+        android:text="2735lott"
         android:layout_centerHorizontal="true"/>
 
     </RelativeLayout>

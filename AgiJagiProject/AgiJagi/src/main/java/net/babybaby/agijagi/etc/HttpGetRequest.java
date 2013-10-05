@@ -1,4 +1,4 @@
-package net.babybaby.agijagi.httprequest;
+package net.babybaby.agijagi.etc;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
