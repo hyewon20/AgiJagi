@@ -33,7 +33,7 @@
 
         <activity android:name=".borad.BoardActivity"></activity>
         <activity android:name=".recipe_detail.RecipeDetailContentsActivity"></activity>
-
+        <activity android:name=".cook_facility_search.Cook_facility_search"></activity>
     </application>
 
     <uses-permission android:name="android.permission.INTERNET" />

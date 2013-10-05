@@ -17,15 +17,14 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
-import net.babybaby.agijagi.cook_facility_search.Cook_facility_search;
+import net.babybaby.agijagi.cook_facility_search.Cook_facility_search_list;
 import net.babybaby.agijagi.logout.LogoutActivity;
 import net.babybaby.agijagi.notice.NoticeActivity;
 import net.babybaby.agijagi.recipe_detail.Recipe_detail_Activity;
 import net.babybaby.agijagi.recipe_search.Recipe_search_Activity;
 import net.babybaby.agijagi.recommand_meal.Recommand_meal_Activity;
 import net.babybaby.agijagi.today_recommand.Today_recommand_Activity;
-import net.babybaby.agijagi.user.UserActivity;
-import net.babybaby.agijagi.week_meal.Week_meal_Activity;
+import net.babybaby.agijagi.weekly_meal.Weekly_Meal_Activity;
 
 public class MainActivity extends Activity {
 
@@ -91,7 +90,7 @@ public class MainActivity extends Activity {
         mDrawerLayout.setDrawerListener(mDrawerToggle);
 
         if (savedInstanceState == null) {
-            selectItem(1);
+            //selectItem(1);
         }
     }
 
@@ -148,8 +147,6 @@ public class MainActivity extends Activity {
         if (usertype == 0) {
             switch (position) {
                 case 0:
-                    fragment = new UserActivity();
-                    fragmentManager.beginTransaction().replace(R.id.content_frame, fragment).commit();
                     break;
                 case 1:
                     fragment = new Today_recommand_Activity();
@@ -172,7 +169,7 @@ public class MainActivity extends Activity {
                     break;
 
                 case 5:
-                    fragment = new Cook_facility_search();
+                    fragment = new Cook_facility_search_list();
                     fragmentManager.beginTransaction().replace(R.id.content_frame, fragment).commit();
                     break;
 
@@ -193,8 +190,6 @@ public class MainActivity extends Activity {
         } else if (usertype == 1) {
             switch (position) {
                 case 0:
-                    fragment = new UserActivity();
-                    fragmentManager.beginTransaction().replace(R.id.content_frame, fragment).commit();
                     break;
                 case 1:
                     fragment = new Today_recommand_Activity();
@@ -207,7 +202,7 @@ public class MainActivity extends Activity {
                     break;
 
                 case 3:
-                    fragment = new Week_meal_Activity(); //주간 식단 검색으로 교체
+                    fragment = new Weekly_Meal_Activity(); //주간 식단 검색으로 교체
                     fragmentManager.beginTransaction().replace(R.id.content_frame, fragment).commit();
                     break;
 
@@ -217,7 +212,7 @@ public class MainActivity extends Activity {
                     break;
 
                 case 5:
-                    fragment = new Cook_facility_search();
+                    fragment = new Cook_facility_search_list();
                     fragmentManager.beginTransaction().replace(R.id.content_frame, fragment).commit();
                     break;
 
@@ -238,26 +233,28 @@ public class MainActivity extends Activity {
         else if (usertype == 2) {
             switch (position) {
                 case 0:
+                    break;
+                case 1:
                     fragment = new Today_recommand_Activity();
                     fragmentManager.beginTransaction().replace(R.id.content_frame, fragment).commit();
                     break;
 
-                case 1:
+                case 2:
                     fragment = new NoticeActivity();
                     fragmentManager.beginTransaction().replace(R.id.content_frame, fragment).commit();
                     break;
 
-                case 2:
+                case 3:
                     fragment = new Recipe_search_Activity();
                     fragmentManager.beginTransaction().replace(R.id.content_frame, fragment).commit();
                     break;
 
-                case 3:
-                    fragment = new Cook_facility_search();
+                case 4:
+                    fragment = new Cook_facility_search_list();
                     fragmentManager.beginTransaction().replace(R.id.content_frame, fragment).commit();
                     break;
 
-                case 4:
+                case 5:
                     fragment = new Recommand_meal_Activity();
                     fragmentManager.beginTransaction().replace(R.id.content_frame, fragment).commit();
                     break;

@@ -9,12 +9,14 @@ import javax.xml.transform.Source;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import net.babybaby.agijagi.MainActivity;
 import net.babybaby.agijagi.etc.HttpGetRequest;
 import net.babybaby.agijagi.recipe_detail.RecipeListModel;
 
 import net.babybaby.agijagi.R;
 
 
+import android.app.ActionBar;
 import android.app.Fragment;
 import android.widget.AbsListView.OnScrollListener;
 import android.widget.AdapterView.OnItemClickListener;
@@ -40,8 +42,8 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 public class Recipe_detail_Activity extends Fragment {
-    private boolean loading = true;
 
+    private boolean loading = true;
     private Boolean end_bool = false;
     private int currentPage = 1;
     private int previousTotal = 0;
@@ -164,7 +166,6 @@ public class Recipe_detail_Activity extends Fragment {
 
                     }
                 });
-
             }
         }.start();
     }
