@@ -6,6 +6,7 @@ package net.babybaby.agijagi.cook_facility_search;
  */
 
 import android.app.Fragment;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -16,6 +17,8 @@ import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 import android.widget.Toast;
+
+import net.babybaby.agijagi.MainActivity;
 import net.babybaby.agijagi.R;
 
 import org.apache.http.HttpEntity;
@@ -35,12 +38,13 @@ import java.util.List;
 
 public class Cook_facility_search extends Fragment {
 
-    ArrayAdapter<CharSequence>  adspin;
+    ArrayAdapter<CharSequence> adspin;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.activity_cook_facility_search, container, false);
 
+        Log.d("getActicity",""+getActivity().toString());
 
         Spinner spinner = (Spinner) rootView.findViewById(R.id.search_spinner);
         spinner.setPrompt("시/도를 선택하세요.");
@@ -61,7 +65,7 @@ public class Cook_facility_search extends Fragment {
         try
         {
             HttpClient client = new DefaultHttpClient();
-            String postURL = "http://babyhoney.kr/index.php/api/getNutritionist/?username=";
+            String postURL = "http://babyhoney.kr/index.php/api/getNutritionist/?username=username="+ MainActivity.id+"&password="+MainActivity.password;
             HttpPost post = new HttpPost(postURL);
             List<NameValuePair> params = new ArrayList<NameValuePair>();
             params.add(new BasicNameValuePair("user", "kris"));

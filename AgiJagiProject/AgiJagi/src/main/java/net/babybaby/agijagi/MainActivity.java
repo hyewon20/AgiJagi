@@ -7,7 +7,6 @@ import android.os.Bundle;
 import android.app.Activity;
 import android.app.Fragment;
 import android.support.v4.app.ActionBarDrawerToggle;
-import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.util.Log;
@@ -37,15 +36,21 @@ public class MainActivity extends Activity {
     private CharSequence mDrawerTitle;
     private ActionBarDrawerToggle mDrawerToggle;
 
-    int usertype;
+    public static int usertype;
+    public static String id;
+    public static String password;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        Log.d("getActicity",""+this);
+
         SharedPreferences prefs = getSharedPreferences("user_info", MODE_PRIVATE);
         usertype = prefs.getInt("type", 2);
+        id = prefs.getString("id","null");
+        password = prefs.getString("password","null");
 
         if (usertype == 0) {
             mDrawerTitles = new String[]{"" + prefs.getString("id", "null"), "메인화면", "공지사항", "레시피 조회", "레시피 검색", "영양사/기관 검색", "추천 식단", "로그아웃"};
