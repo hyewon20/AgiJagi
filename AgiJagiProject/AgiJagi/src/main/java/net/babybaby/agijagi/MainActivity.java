@@ -1,6 +1,7 @@
 package net.babybaby.agijagi;
 
 import android.app.FragmentManager;
+import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.app.Activity;
@@ -25,30 +26,45 @@ import net.babybaby.agijagi.recipe_search.Recipe_search_Activity;
 import net.babybaby.agijagi.recommand_meal.Recommand_meal_Activity;
 import net.babybaby.agijagi.today_recommand.Today_recommand_Activity;
 import net.babybaby.agijagi.user.UserActivity;
+import net.babybaby.agijagi.week_meal.Week_meal_Activity;
 
 public class MainActivity extends Activity {
 
-    private String[] mPlanetTitles;
+    private String[] mDrawerTitles;
     private DrawerLayout mDrawerLayout;
     private ListView mDrawerList;
     private CharSequence mTitle;
     private CharSequence mDrawerTitle;
     private ActionBarDrawerToggle mDrawerToggle;
 
+    int usertype;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        SharedPreferences prefs = getSharedPreferences("user_info", MODE_PRIVATE);
+        usertype = prefs.getInt("type", 2);
+
+        if (usertype == 0) {
+            mDrawerTitles = new String[]{"" + prefs.getString("id", "null"), "메인화면", "공지사항", "레시피 조회", "레시피 검색", "영양사/기관 검색", "추천 식단", "로그아웃"};
+        } else if (usertype == 1) {
+            mDrawerTitles = new String[]{"" + prefs.getString("og_name", "null"), "메인화면", "공지사항", "주간식단 조회", "레시피 검색", "영양사/기관 검색", "추천 식단", "로그아웃"};
+        } else if (usertype == 2) {
+            mDrawerTitles = new String[]{ "메인화면", "공지사항", "레시피 검색", "영양사/기관 검색", "추천 식단"};
+        }
+
+        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this, R.layout.drawer_list_item, mDrawerTitles);
+
         mTitle = mDrawerTitle = getTitle();
-        mPlanetTitles = getResources().getStringArray(R.array.planets_array);
+        //mDrawerTitles = getResources().getStringArray(R.array.drawer_array);
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         mDrawerList = (ListView) findViewById(R.id.left_drawer);
 
         mDrawerLayout.setDrawerShadow(R.drawable.drawer_shadow, GravityCompat.START);
-
-        mDrawerList.setAdapter(new ArrayAdapter<String>(this, R.layout.drawer_list_item, mPlanetTitles));
-
+        mDrawerList.setAdapter(arrayAdapter);
+        //mDrawerList.setAdapter(new ArrayAdapter<String>(this, R.layout.drawer_list_item, mDrawerTitles));
         mDrawerList.setOnItemClickListener(new DrawerItemClickListener());
 
         getActionBar().setDisplayHomeAsUpEnabled(true);
@@ -124,52 +140,129 @@ public class MainActivity extends Activity {
         Fragment fragment = null;
         FragmentManager fragmentManager = getFragmentManager();
 
-        switch (position) {
-            case 0:
-                fragment = new UserActivity();
-                fragmentManager.beginTransaction().replace(R.id.content_frame, fragment).commit();
-                break;
-            case 1:
-                fragment = new Today_recommand_Activity();
-                fragmentManager.beginTransaction().replace(R.id.content_frame, fragment).commit();
-                break;
+        if (usertype == 0) {
+            switch (position) {
+                case 0:
+                    fragment = new UserActivity();
+                    fragmentManager.beginTransaction().replace(R.id.content_frame, fragment).commit();
+                    break;
+                case 1:
+                    fragment = new Today_recommand_Activity();
+                    fragmentManager.beginTransaction().replace(R.id.content_frame, fragment).commit();
+                    break;
 
-            case 2:
-                fragment = new NoticeActivity();
-                fragmentManager.beginTransaction().replace(R.id.content_frame, fragment).commit();
-                break;
+                case 2:
+                    fragment = new NoticeActivity();
+                    fragmentManager.beginTransaction().replace(R.id.content_frame, fragment).commit();
+                    break;
 
-            case 3:
-                fragment = new Recipe_detail_Activity();
-                fragmentManager.beginTransaction().replace(R.id.content_frame, fragment).commit();
-                break;
+                case 3:
+                    fragment = new Recipe_detail_Activity();
+                    fragmentManager.beginTransaction().replace(R.id.content_frame, fragment).commit();
+                    break;
 
-            case 4:
-                fragment = new Recipe_search_Activity();
-                fragmentManager.beginTransaction().replace(R.id.content_frame, fragment).commit();
-                break;
+                case 4:
+                    fragment = new Recipe_search_Activity();
+                    fragmentManager.beginTransaction().replace(R.id.content_frame, fragment).commit();
+                    break;
 
-            case 5:
-                fragment = new Cook_facility_search();
-                fragmentManager.beginTransaction().replace(R.id.content_frame, fragment).commit();
-                break;
+                case 5:
+                    fragment = new Cook_facility_search();
+                    fragmentManager.beginTransaction().replace(R.id.content_frame, fragment).commit();
+                    break;
 
-            case 6:
-                fragment = new Recommand_meal_Activity();
-                fragmentManager.beginTransaction().replace(R.id.content_frame, fragment).commit();
-                break;
+                case 6:
+                    fragment = new Recommand_meal_Activity();
+                    fragmentManager.beginTransaction().replace(R.id.content_frame, fragment).commit();
+                    break;
 
-            case 7:
-                fragment = new LogoutActivity();
-                fragmentManager.beginTransaction().replace(R.id.content_frame, fragment).commit();
-                break;
+                case 7:
+                    fragment = new LogoutActivity();
+                    fragmentManager.beginTransaction().replace(R.id.content_frame, fragment).commit();
+                    break;
 
-            default:
-                break;
+                default:
+                    break;
+            }
+
+        } else if (usertype == 1) {
+            switch (position) {
+                case 0:
+                    fragment = new UserActivity();
+                    fragmentManager.beginTransaction().replace(R.id.content_frame, fragment).commit();
+                    break;
+                case 1:
+                    fragment = new Today_recommand_Activity();
+                    fragmentManager.beginTransaction().replace(R.id.content_frame, fragment).commit();
+                    break;
+
+                case 2:
+                    fragment = new NoticeActivity();
+                    fragmentManager.beginTransaction().replace(R.id.content_frame, fragment).commit();
+                    break;
+
+                case 3:
+                    fragment = new Week_meal_Activity(); //주간 식단 검색으로 교체
+                    fragmentManager.beginTransaction().replace(R.id.content_frame, fragment).commit();
+                    break;
+
+                case 4:
+                    fragment = new Recipe_search_Activity();
+                    fragmentManager.beginTransaction().replace(R.id.content_frame, fragment).commit();
+                    break;
+
+                case 5:
+                    fragment = new Cook_facility_search();
+                    fragmentManager.beginTransaction().replace(R.id.content_frame, fragment).commit();
+                    break;
+
+                case 6:
+                    fragment = new Recommand_meal_Activity();
+                    fragmentManager.beginTransaction().replace(R.id.content_frame, fragment).commit();
+                    break;
+
+                case 7:
+                    fragment = new LogoutActivity();
+                    fragmentManager.beginTransaction().replace(R.id.content_frame, fragment).commit();
+                    break;
+
+                default:
+                    break;
+            }
         }
+        else if (usertype == 2) {
+            switch (position) {
+                case 0:
+                    fragment = new Today_recommand_Activity();
+                    fragmentManager.beginTransaction().replace(R.id.content_frame, fragment).commit();
+                    break;
 
-        mDrawerList.setItemChecked(position, true);
-        setTitle(mPlanetTitles[position]);
+                case 1:
+                    fragment = new NoticeActivity();
+                    fragmentManager.beginTransaction().replace(R.id.content_frame, fragment).commit();
+                    break;
+
+                case 2:
+                    fragment = new Recipe_search_Activity();
+                    fragmentManager.beginTransaction().replace(R.id.content_frame, fragment).commit();
+                    break;
+
+                case 3:
+                    fragment = new Cook_facility_search();
+                    fragmentManager.beginTransaction().replace(R.id.content_frame, fragment).commit();
+                    break;
+
+                case 4:
+                    fragment = new Recommand_meal_Activity();
+                    fragmentManager.beginTransaction().replace(R.id.content_frame, fragment).commit();
+                    break;
+
+                default:
+                    break;
+            }
+        }
+        mDrawerList.setItemChecked(position,true);
+        //setTitle(mDrawerTitles[position]);
         mDrawerLayout.closeDrawer(mDrawerList);
     }
 

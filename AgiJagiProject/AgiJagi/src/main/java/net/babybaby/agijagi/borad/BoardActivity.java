@@ -19,7 +19,6 @@ public class BoardActivity extends Activity {
         TextView notice_title = (TextView) findViewById(R.id.notice_title);
         TextView notice_date = (TextView) findViewById(R.id.notice_date);
         TextView notice_description = (TextView) findViewById(R.id.notice_description);
-
         Intent intent = getIntent();
 
         notice_title.setText(intent.getStringExtra("title"));

@@ -1,7 +1,6 @@
 package net.babybaby.agijagi.login;
 
 import android.util.Log;
-
 import net.babybaby.agijagi.etc.HttpGetRequest;
 
 import org.json.JSONException;
@@ -18,16 +17,10 @@ public class LoginThread extends Thread {
     int type;
     int og_id;
     String og_name;
-    Runnable testRequestRunnable;
 
     public void run() {
-
         HttpGetRequest hgr = new HttpGetRequest();
         String url = hgr.getHTML("http://babyhoney.kr/index.php/api/loginUser/?username="+Login.id+"&password="+Login.password);
-
-        Log.d("id",""+Login.id);
-        Log.d("pw",""+Login.password);
-        Log.d("url",""+url);
 
         try {
             JSONObject response = new JSONObject(url);
@@ -39,10 +32,12 @@ public class LoginThread extends Thread {
             Login.get_id = id;
             type = item.getInt("type");
             Login.get_type = type;
-            og_id = item.getInt("og_id");
-            Login.og_id = og_id;
-            og_name = item.getString("og_name");
-            Login.og_name = og_name;
+            if(type==1){
+                og_id = item.getInt("og_id");
+                Login.og_id = og_id;
+                og_name = item.getString("og_name");
+                Login.og_name = og_name;
+            }
             login_suc = Integer.parseInt(result_str);
 
         } catch (JSONException e) {

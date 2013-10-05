@@ -1,19 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-<string name="app_name">아기자기</string>
-<string name="action_settings">Settings</string>
-<string-array name="planets_array">
-    <item>김냠냠</item>
-    <item>메인화면</item>
-    <item>공지사항</item>
-    <item>레시피 조회</item>
-    <item>레시피 검색</item>
-    <item>영양사/기관 검색</item>
-    <item>추천 식단</item>
-    <item>로그아웃</item>
-</string-array>
-<string name="drawer_open">Open navigation drawer</string>
-<string name="drawer_close">Close navigation drawer</string>
-<string name="action_websearch">Web search</string>
-<string name="app_not_available">Sorry, there\'s no web browser available</string>
+    <string name="app_name">아기자기</string>
+    <string name="action_settings">Settings</string>
+    <string-array name="drawer_array">
+        <item>김냠냠</item>
+        <item>메인화면</item>
+        <item>공지사항</item>
+        <item>레시피 조회</item>
+        <item>레시피 검색</item>
+        <item>영양사/기관 검색</item>
+        <item>추천 식단</item>
+        <item>로그아웃</item>
+    </string-array>
+    <string-array name="selected">
+        <item>영양사</item>
+        <item>기관</item>
+    </string-array>
+    <string name="drawer_open">Open navigation drawer</string>
+    <string name="drawer_close">Close navigation drawer</string>
+    <string name="action_websearch">Web search</string>
+    <string name="app_not_available">Sorry, there\'s no web browser available</string>
 </resources>

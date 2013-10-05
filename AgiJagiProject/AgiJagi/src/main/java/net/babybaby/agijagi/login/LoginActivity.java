@@ -2,6 +2,7 @@ package net.babybaby.agijagi.login;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -55,6 +56,14 @@ public class LoginActivity extends Activity {
                 Toast.makeText(LoginActivity.this,""+Login.login_success,Toast.LENGTH_SHORT).show();
                 if(Login.login_success==true)
                 {
+                    SharedPreferences prefs = getSharedPreferences("user_info", MODE_PRIVATE);
+                    SharedPreferences.Editor ed = prefs.edit();
+                    ed.putString("id" , Login.get_id);
+                    ed.putInt("type" , Login.get_type); // value : 저장될 값,
+                    ed.putInt("og_id" , Login.og_id); // value : 저장될 값,
+                    ed.putString("og_name" , Login.og_name); // value : 저장될 값,
+                    ed.commit(); // 필수! 이것을 안해주면 저장이 안되요!
+
                     Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                     startActivity(intent);
                 }
