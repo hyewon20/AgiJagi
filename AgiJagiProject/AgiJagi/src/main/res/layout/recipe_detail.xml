@@ -4,66 +4,103 @@
     android:layout_height="match_parent"
     android:orientation="vertical" >
 
-    <TextView
-        android:id="@+id/recipe_detail_title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="현미밥"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="33dip"
+        android:background="#d6d6d6">
+        <TextView
+            android:id="@+id/recipe_detail_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="3dip"
+            android:text="현미밥"
+            android:textStyle="bold"
+            android:textColor="#2f2f2f"
+            android:layout_centerHorizontal="true"
+            android:textAppearance="?android:attr/textAppearanceLarge" />
+        />
+    </RelativeLayout>
 
     <ImageView
         android:id="@+id/recipe_detial_img"
-        android:layout_width="116dp"
-        android:layout_height="131dp"/>
-	<LinearLayout
-            android:layout_marginTop="5dp"
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="#c6c6c6"
-            android:orientation="vertical" />
+        android:layout_width="fill_parent"
+        android:layout_height="150dp"
+        android:layout_marginTop="5dip"
+        android:layout_gravity="center_horizontal"/>
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="2dip"
+        android:layout_marginTop="10dip"
+        android:background="#D3D3D3"/>
+
     <TextView
         android:id="@+id/textView6"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="10dip"
         android:text="영양정보"
+        android:drawablePadding="7dip"
+        android:layout_marginLeft="5dip"
+        android:drawableLeft="@drawable/nutrition"
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
     <TextView
         android:id="@+id/recipe_detail_balance"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="5dip"
+        android:layout_marginLeft="17dip"
+        android:lineSpacingExtra="4dip"
         android:textAppearance="?android:attr/textAppearanceSmall" />
-	<LinearLayout
-            android:layout_marginTop="5dp"
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="#c6c6c6"
-            android:orientation="vertical" />
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="2dip"
+        android:layout_marginTop="10dip"
+        android:background="#D3D3D3"/>
+
+
     <TextView
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="재료"
+        android:drawablePadding="7dip"
+        android:layout_marginLeft="5dip"
+        android:drawableLeft="@drawable/ingredients"
+        android:layout_marginTop="10dip"
         android:textAppearance="?android:attr/textAppearanceMedium" />
-
     <TextView
         android:id="@+id/recipe_detail_material"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-         />
-	
+        android:layout_marginLeft="17dip"
+        android:lineSpacingExtra="4dip"
+        android:layout_marginTop="5dip"/>
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="2dip"
+        android:layout_marginTop="10dip"
+        android:background="#D3D3D3"/>
+
+
     <TextView
         android:id="@+id/textView4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="10dip"
         android:text="조리과정"
+        android:drawablePadding="7dip"
+        android:layout_marginLeft="5dip"
+        android:drawableLeft="@drawable/cookprocess"
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
     <TextView
         android:id="@+id/recipe_detail_instruction"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-         />
+        android:layout_marginLeft="15dip"
+        android:layout_marginTop="5dip"
+        android:lineSpacingExtra="4dip"
+        />
 
 </LinearLayout>

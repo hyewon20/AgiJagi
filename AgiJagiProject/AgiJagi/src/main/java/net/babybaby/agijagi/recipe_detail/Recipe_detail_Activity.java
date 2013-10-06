@@ -63,7 +63,7 @@ public class Recipe_detail_Activity extends Fragment {
 
         lists = new ArrayList<RecipeListModel>();
         listView = (ListView) rootView.findViewById(R.id.recipe_list);
-     //   listView.setOnScrollListener(new EndlessScrollListener());
+        //   listView.setOnScrollListener(new EndlessScrollListener());
         b1_adapter = new RecipeListAdapter(getActivity(), R.layout.row_recipe, lists);
         listView.setAdapter(b1_adapter);
 
@@ -94,6 +94,7 @@ public class Recipe_detail_Activity extends Fragment {
             }
         });
         updateList();
+
 
         return rootView;
     }

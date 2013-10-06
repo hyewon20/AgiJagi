@@ -15,6 +15,7 @@ public class Cook_facility_search_Model {
     String facility_phone_num;
 
     public Cook_facility_search_Model() {
+
     }
 
     public Cook_facility_search_Model(String cook_name, String cook_address) {

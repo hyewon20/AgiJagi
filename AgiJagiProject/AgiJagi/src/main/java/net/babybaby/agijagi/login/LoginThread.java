@@ -22,6 +22,8 @@ public class LoginThread extends Thread {
         HttpGetRequest hgr = new HttpGetRequest();
         String url = hgr.getHTML("http://babyhoney.kr/index.php/api/loginUser/?username="+Login.id+"&password="+Login.password);
 
+        Log.d("result2",""+url);
+
         try {
             JSONObject response = new JSONObject(url);
             JSONObject channel = response.getJSONObject("channel");
@@ -45,12 +47,9 @@ public class LoginThread extends Thread {
         }
 
         if(login_suc==400){
-            Log.d("login_suc", ""+login_suc);
             Login.login_success = true;
-            Log.d("login_suc2", ""+login_suc+","+id+","+type+","+og_id+","+og_name+"");
         }
         else if(login_suc==200){
-            Log.d("login_suc", ""+login_suc);
             Login.login_success = false;
         }
 

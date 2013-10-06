@@ -24,6 +24,7 @@ public class LoginActivity extends Activity {
     EditText pw_edittext;
 
     Button login_button;
+    Button login_unregist;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +32,7 @@ public class LoginActivity extends Activity {
         setContentView(R.layout.activity_login);
 
         login_button = (Button) findViewById(R.id.login_button);
+        login_unregist = (Button) findViewById(R.id.login_unregist);
         id_edittext = (EditText) findViewById(R.id.login_email);
         pw_edittext = (EditText) findViewById(R.id.login_password);
 
@@ -52,7 +54,6 @@ public class LoginActivity extends Activity {
                     e.printStackTrace();
                 }
 
-                Toast.makeText(LoginActivity.this,""+Login.login_success,Toast.LENGTH_SHORT).show();
                 if(Login.login_success==true)
                 {
                     SharedPreferences prefs = getSharedPreferences("user_info", MODE_PRIVATE);
@@ -72,6 +73,23 @@ public class LoginActivity extends Activity {
                 }
             }
         });
+
+        login_unregist.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                SharedPreferences prefs = getSharedPreferences("user_info", MODE_PRIVATE);
+                SharedPreferences.Editor ed = prefs.edit();
+                ed.putString("id" , "비회원");
+                ed.putInt("type" , 2); // value : 저장될 값,
+                ed.commit(); // 필수! 이것을 안해주면 저장이 안되요!
+
+                Intent intent2 = new Intent(LoginActivity.this, MainActivity.class);
+                startActivity(intent2);
+
+            }
+        });
+
+
 
     }
 }

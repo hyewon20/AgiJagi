@@ -1,38 +1,52 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="fill_parent" android:layout_height="fill_parent">
+    android:layout_width="fill_parent" android:layout_height="fill_parent"
+    android:background="#FAFAFA">
 
-    <TextView android:id="@+id/login_title"
+    <RelativeLayout android:id="@+id/logontitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="50dip"
-        android:text="아기자기"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="70dip"
-        />
+        android:layout_marginTop="95dip"
+        android:layout_centerHorizontal="true">
+
+        <ImageView android:id="@+id/logo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/logo"/>
+
+        <ImageView android:id="@+id/title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/title"
+            android:layout_toRightOf="@id/logo"/>
+
+
+    </RelativeLayout>
 
     <RelativeLayout android:id="@+id/login_edit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/login_title"
+        android:layout_below="@id/logontitle"
         android:layout_centerInParent="true"
-        android:layout_marginTop="50dip">
+        android:layout_marginTop="45dip"
+        android:layout_marginBottom="30dip">
 
-    <EditText android:id="@+id/login_email"
-        android:layout_width="250dip"
-        android:layout_height="50dip"
-        android:hint="ID"
-        android:text="jong327"
-        android:layout_centerHorizontal="true"/>
-    <EditText android:id="@+id/login_password"
-        android:layout_width="250dip"
-        android:layout_height="50dip"
-        android:layout_below="@id/login_email"
-        android:hint="Password"
-        android:password="true"
-        android:text="2735lott"
-        android:layout_centerHorizontal="true"/>
+
+        <EditText android:id="@+id/login_email"
+            android:layout_width="250dip"
+            android:layout_height="50dip"
+            android:hint="ID"
+            android:singleLine="true"
+            android:layout_centerHorizontal="true"/>
+        <EditText android:id="@+id/login_password"
+            android:layout_width="250dip"
+            android:layout_height="50dip"
+            android:layout_below="@id/login_email"
+            android:hint="Password"
+            android:singleLine="true"
+            android:password="true"
+            android:layout_centerHorizontal="true"/>
 
     </RelativeLayout>
 

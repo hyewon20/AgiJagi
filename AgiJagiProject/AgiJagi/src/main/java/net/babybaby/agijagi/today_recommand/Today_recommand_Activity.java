@@ -19,7 +19,7 @@ public class Today_recommand_Activity extends Fragment {
                              Bundle savedInstanceState){
         View rootView = inflater.inflate(R.layout.fragment_main, container, false);
         TextView tv = (TextView) rootView.findViewById(R.id.textview);
-        tv.setText("추천식단");
+        tv.setText("메인화면");
 
         return rootView;
     }

@@ -58,7 +58,12 @@ public class NoticeActivity extends Fragment{
                         JSONObject obj = data.getJSONObject(i);
                         NoticeModel nModel = new NoticeModel();
                         nModel.SetTitle(obj.getString("nt_title"));
-                        nModel.SetDescription(obj.getString("nt_description"));
+
+                        String lineSep = System.getProperty("line.separator");
+                        String yourString= obj.getString("nt_description");
+                        yourString = yourString.replaceAll("<br/>", lineSep);
+
+                        nModel.SetDescription(yourString);
                         nModel.SetRegDate(obj.getString("nt_creation_time"));
                         lists.add(nModel);
                     }

@@ -31,6 +31,7 @@ import net.babybaby.agijagi.R;
 import net.babybaby.agijagi.etc.HttpGetRequest;
 import net.babybaby.agijagi.cook_facility_search.Cook_facility_search;
 import net.babybaby.agijagi.cook_facility_search.Cook_facility_search_Model;
+import net.babybaby.agijagi.cook_facility_search.CFSThread;
 import net.babybaby.agijagi.recipe_detail.ImageLoader;
 import net.babybaby.agijagi.recipe_detail.RecipeListModel;
 
@@ -44,17 +45,26 @@ import javax.xml.transform.Source;
 
 public class Cook_facility_search_list extends Fragment {
 
-    ArrayAdapter<CharSequence> adspin;
     Cook_facility_Adapter adapter;
+    ArrayAdapter<CharSequence> adspin;
     ArrayList<Cook_facility_search_Model> lists;
     ListView listview;
     View rootView = null;
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         rootView = inflater.inflate(R.layout.activity_cook_facility_list, container, false);
+
+        try{
+            CFSThread cfsThread = new CFSThread();
+            cfsThread.run();
+            cfsThread.join();
+
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+
+        }
 
         Spinner spinner = (Spinner) rootView.findViewById(R.id.cook_facility_spinner);
         spinner.setPrompt("시/도를 선택하세요.");
@@ -76,9 +86,10 @@ public class Cook_facility_search_list extends Fragment {
         EditText edittext = (EditText) rootView.findViewById(R.id.cook_facility_txt);
         Button submit = (Button) rootView.findViewById(R.id.cook_facility_btn);
 
+        lists = new ArrayList<Cook_facility_search_Model>();
         listview = (ListView) rootView.findViewById(R.id.activity_cook_facility_list);
-
         adapter = new Cook_facility_Adapter(getActivity(), R.layout.row_cook_facility, lists);
+        listview.setAdapter(adapter);
 
 
         listview.setOnItemClickListener(new OnItemClickListener() {
@@ -88,25 +99,35 @@ public class Cook_facility_search_list extends Fragment {
             }
         });
 
-        listview.setAdapter(adapter);
 
 
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.d("Button","Button Click");
-                adapter.add(new Cook_facility_search_Model("adsf","jkl"));
+                Log.d("Button", "Button Click");
+                clearupdate();
             }
         });
 
+      //  adapter.add(new Cook_facility_search_Model("dfdfdf","dfdfdfdf"));
 
         return rootView;
+
+    }
+
+    private void clearupdate() {
+        adapter.clear();
+        lists = new ArrayList<Cook_facility_search_Model>();
+        listview = (ListView) rootView.findViewById(R.id.activity_cook_facility_list);
+        adapter = new Cook_facility_Adapter(getActivity(), R.layout.row_cook_facility, lists);
+        listview.setAdapter(adapter);
     }
 
     private class Cook_facility_Adapter extends ArrayAdapter<Cook_facility_search_Model> {
 
         public ArrayList<Cook_facility_search_Model> items;
         private Context mcontext;
+
 
         public Cook_facility_Adapter(Context context, int textViewResourceId, ArrayList<Cook_facility_search_Model> items) {
             super(context, textViewResourceId, items);
@@ -121,7 +142,7 @@ public class Cook_facility_search_list extends Fragment {
 
             if (v == null) {
                 LayoutInflater vi = (LayoutInflater) getActivity().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-                v = vi.inflate(R.layout.row_recipe, null);
+                v = vi.inflate(R.layout.row_cook_facility, null);
             }
 
             Cook_facility_search_Model areaInfo = items.get(position);
@@ -138,7 +159,7 @@ public class Cook_facility_search_list extends Fragment {
             return v;
         }
     }
-
+        /*
     public class CFSThread extends Thread {
 
         String result_str;
@@ -146,6 +167,8 @@ public class Cook_facility_search_list extends Fragment {
         public void run() {
             HttpGetRequest hgr = new HttpGetRequest();
             String result = hgr.getHTML("http://babyhoney.kr/index.php/api/getNutritionist/?username=flashilver&password=ac619ef29c44938cbf0a619f5029ff47&page=0&offset=2&location=서울");
+            Log.d("result",""+result);
+
             try {
                 JSONObject response = new JSONObject(result);
                 JSONObject channel = response.getJSONObject("channel");
@@ -165,4 +188,5 @@ public class Cook_facility_search_list extends Fragment {
             }
         }
     }
+    */
 }

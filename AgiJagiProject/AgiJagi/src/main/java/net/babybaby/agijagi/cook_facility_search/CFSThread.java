@@ -1,9 +1,7 @@
 package net.babybaby.agijagi.cook_facility_search;
 
 import android.util.Log;
-
 import net.babybaby.agijagi.etc.HttpGetRequest;
-import net.babybaby.agijagi.login.Login;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -18,9 +16,13 @@ public class CFSThread extends Thread {
 
     String result_str;
     ArrayList<Cook_facility_search_Model> lists;
+
     public void run(){
         HttpGetRequest hgr = new HttpGetRequest();
-        String result = hgr.getHTML("http://babyhoney.kr/index.php/api/getNutritionist/?username=flashilver&password=ac619ef29c44938cbf0a619f5029ff47&page=0&offset=2&location=서울");
+        String result = hgr.getHTML("http://babyhoney.kr/index.php/api/GetNutritionist/?username=jong327&password=ac619ef29c44938cbf0a619f5029ff47&page=0&offset=2&location=서울");
+
+        Log.d("result",""+result);
+
         try {
             JSONObject response = new JSONObject(result);
             JSONObject channel = response.getJSONObject("channel");
@@ -38,5 +40,6 @@ public class CFSThread extends Thread {
         } catch (Exception e) {
             Log.d("jsonexception", e.toString());
         }
+
     }
 }

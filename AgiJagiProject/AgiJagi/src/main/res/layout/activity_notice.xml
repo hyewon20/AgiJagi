@@ -2,7 +2,24 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".MainActivity" >
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="33dip"
+        android:background="#ff6b6b">
+        <TextView
+            android:id="@+id/aa"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:text="공지사항"
+            android:textSize="23dip"
+            android:layout_centerHorizontal="true"
+            android:textColor="#ffd2d2"
+            />
+    </RelativeLayout>
 
     <ListView
         android:id="@+id/listView1"
