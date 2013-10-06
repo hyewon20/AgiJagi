@@ -44,17 +44,23 @@ public class MainActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        Fragment fragment = null;
+        FragmentManager fragmentManager = getFragmentManager();
+
+        fragment = new Today_recommand_Activity();
+        fragmentManager.beginTransaction().replace(R.id.content_frame, fragment).commit();
+
         SharedPreferences prefs = getSharedPreferences("user_info", MODE_PRIVATE);
         usertype = prefs.getInt("type", 2);
         id = prefs.getString("id","null");
         password = prefs.getString("password","null");
 
         if (usertype == 0) {
-            mDrawerTitles = new String[]{"" + prefs.getString("id", "null")+"님 반갑습니다.", "메인화면", "공지사항", "레시피 검색", "영양사/기관 검색", "추천 식단", "로그아웃"};
+            mDrawerTitles = new String[]{"" + prefs.getString("id", "null")+"님 반갑습니다.", "메인화면", "공지사항", "레시피 검색", "영양사/기관 검색", "로그아웃"};
         } else if (usertype == 1) {
-            mDrawerTitles = new String[]{"" + prefs.getString("og_name", "null")+"님 반갑습니다.", "메인화면", "공지사항", "주간식단 조회", "레시피 검색", "영양사/기관 검색", "추천 식단", "로그아웃"};
+            mDrawerTitles = new String[]{"" + prefs.getString("og_name", "null")+"님 반갑습니다.", "메인화면", "공지사항", "주간식단 조회", "레시피 검색", "영양사/기관 검색", "로그아웃"};
         } else if (usertype == 2) {
-            mDrawerTitles = new String[]{"비회원님 환영합니다.", "메인화면", "공지사항", "레시피 검색", "영양사/기관 검색", "추천 식단"};
+            mDrawerTitles = new String[]{"비회원님 환영합니다.", "메인화면", "공지사항", "레시피 검색", "영양사/기관 검색"};
         }
 
         ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this, R.layout.drawer_list_item, mDrawerTitles);
@@ -104,13 +110,7 @@ public class MainActivity extends Activity {
         mDrawerToggle.onConfigurationChanged(newConfig);
     }
 
-    @Override
-    public boolean onPrepareOptionsMenu(Menu menu) {
-        boolean drawerOpen = mDrawerLayout.isDrawerOpen(mDrawerList);
-        menu.findItem(R.id.action_websearch).setVisible(!drawerOpen);
 
-        return super.onPrepareOptionsMenu(menu);
-    }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -167,11 +167,6 @@ public class MainActivity extends Activity {
                     break;
 
                 case 5:
-                    fragment = new Recommand_meal_Activity();
-                    fragmentManager.beginTransaction().replace(R.id.content_frame, fragment).commit();
-                    break;
-
-                case 6:
                     finish();
 
                     break;
@@ -210,15 +205,6 @@ public class MainActivity extends Activity {
                     break;
 
                 case 6:
-                    fragment = new Recommand_meal_Activity();
-                    fragmentManager.beginTransaction().replace(R.id.content_frame, fragment).commit();
-                    break;
-
-                case 7:
-                    /*
-                    fragment = new LogoutActivity();
-                    fragmentManager.beginTransaction().replace(R.id.content_frame, fragment).commit();
-                    */
 
                     finish();
                     break;
@@ -251,10 +237,6 @@ public class MainActivity extends Activity {
                     fragmentManager.beginTransaction().replace(R.id.content_frame, fragment).commit();
                     break;
 
-                case 5:
-                    fragment = new Recommand_meal_Activity();
-                    fragmentManager.beginTransaction().replace(R.id.content_frame, fragment).commit();
-                    break;
 
                 default:
                     break;

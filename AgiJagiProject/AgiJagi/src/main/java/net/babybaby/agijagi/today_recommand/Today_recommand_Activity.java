@@ -17,9 +17,7 @@ public class Today_recommand_Activity extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState){
-        View rootView = inflater.inflate(R.layout.fragment_main, container, false);
-        TextView tv = (TextView) rootView.findViewById(R.id.textview);
-        tv.setText("메인화면");
+        View rootView = inflater.inflate(R.layout.activity_today_recommand, container, false);
 
         return rootView;
     }

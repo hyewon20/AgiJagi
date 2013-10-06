@@ -1,154 +1,337 @@
-<?xml version="1.0" encoding="utf-8"?>
-
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical">    <!-- The main content view -->
 
     <RelativeLayout
-        android:layout_width="300dip"
-        android:layout_height="170dip"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="14dp"
-        android:layout_centerInParent="true">
+        android:layout_width="fill_parent"
+        android:layout_height="33dip"
+        android:background="#556270">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:text="메인화면"
+            android:textColor="#dddfe2"
+            android:textSize="23dip"
+            android:textStyle="bold" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="38dip"
+        android:layout_marginTop="15dip"
+        android:background="#cccfd4"
+        android:layout_marginBottom="15dip"
+        >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_weight="1"
+            android:text="오늘의 추천 레시피"
+            android:textColor="#76818c"
+            android:textSize="17dip" />
+    </RelativeLayout>
+
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:orientation="horizontal">
 
         <RelativeLayout
-            android:id="@+id/title_color"
-            android:layout_width="80dip"
-            android:layout_height="30dip"
-            android:background="#04adbf">
-            <TextView android:layout_width="wrap_content"
+            android:id="@+id/example1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="10dip">
+
+            <LinearLayout
+                android:id="@+id/a"
+                android:layout_width="100dip"
                 android:layout_height="wrap_content"
-                android:layout_centerInParent="true"
-                android:text="공지사항"
-                android:textColor="#ffffff"/>
+                android:layout_marginTop="8dip"
+                android:layout_marginLeft="13dip"
+                android:background="#F9EAA6"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="25dip"
+                    android:layout_marginTop="3dip"
+                    android:gravity="center_horizontal"
+                    android:text="비빔밥"
+                    android:textColor="#939393"
+                    android:textSize="17dip" />
+
+
+            </LinearLayout>
+
+            <ImageView
+                android:layout_width="110dip"
+                android:layout_height="110dip"
+                android:layout_below="@id/a"
+                android:layout_gravity="left"
+                android:layout_marginLeft="10dip"
+                android:src="@drawable/bibim" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/example2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dip"
+            android:layout_marginRight="10dip">
+
+            <LinearLayout
+                android:id="@+id/b"
+                android:layout_width="100dip"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dip"
+                android:background="#F9EAA6"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginLeft="15dip"
+                    android:layout_marginTop="3dip"
+                    android:text="브로콜리죽"
+                    android:textColor="#939393"
+                    android:textSize="17dip" />
+            </LinearLayout>
+
+            <ImageView
+                android:layout_width="110dip"
+                android:layout_height="110dip"
+                android:layout_below="@id/b"
+                android:layout_gravity="left"
+                android:drawablePadding="4dp"
+                android:src="@drawable/bro" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/example3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dip"
+            android:layout_marginRight="10dip">
+
+            <LinearLayout
+                android:id="@+id/c"
+                android:layout_width="100dip"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dip"
+                android:background="#F9EAA6"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="15dip"
+                    android:layout_marginTop="3dip"
+                    android:text="오징어튀김"
+                    android:textColor="#939393"
+                    android:textSize="16dip" />
+            </LinearLayout>
+
+            <ImageView
+                android:layout_width="110dip"
+                android:layout_height="110dip"
+                android:layout_below="@id/c"
+                android:layout_gravity="left"
+                android:drawablePadding="4dp"
+                android:src="@drawable/ojing" />
+        </RelativeLayout>
+    </LinearLayout>
+
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="38dip"
+        android:layout_marginTop="15dip"
+        android:background="#cccfd4"
+        android:layout_marginBottom="15dip"
+        >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_weight="1"
+            android:text="식중독 지수"
+            android:textColor="#76818c"
+            android:textSize="17dip" />
+    </RelativeLayout>
+
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:orientation="horizontal">
+
+        <RelativeLayout
+            android:id="@+id/example1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="10dip">
+
+            <RelativeLayout
+                android:id="@+id/a"
+                android:layout_width="100dip"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dip"
+                android:background="#4DBCE9"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dip"
+                    android:layout_marginTop="3dip"
+                    android:layout_centerInParent="true"
+                    android:text=" 오늘 "
+                    android:textColor="#dbf1fa"
+                    android:textSize="13dip"/>
 
 
             </RelativeLayout>
 
-        <RelativeLayout
-            android:layout_below="@id/title_color"
-            android:layout_width="250dip"
-            android:layout_height="170dip"
-            android:layout_centerHorizontal="true">
-
-            <LinearLayout
+            <ImageView
+                android:layout_width="100dip"
+                android:layout_height="100dip"
+                android:layout_below="@id/a"
+                android:layout_gravity="left"
+                android:layout_centerInParent="true"
+                android:src="@drawable/sunny"/>
+            <TextView
+                android:layout_marginTop="120dip"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
-                android:orientation="vertical">
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:layout_weight="1">
-                    <TextView android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="번호"
-                        android:textSize="17dip"/>
-                    <TextView android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="제목"
-                        android:layout_marginLeft="17dip"
-                        android:textSize="17dip"/>
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="글쓴이"
-                        android:layout_marginLeft="17dip"
-                        android:textSize="17dip"/>
-                    <TextView android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="조회수"
-                        android:layout_marginLeft="17dip"
-                        android:textSize="17dip"/>
-                    <TextView android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="날짜"
-                        android:layout_marginLeft="17dip"
-                        android:textSize="17dip"/>
-                    </LinearLayout>
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:layout_weight="1">
-                    <TextView android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="1"
-                        android:layout_marginLeft="5dip"/>
-                    <TextView android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="아기자기"
-                        android:layout_marginLeft="17dip"/>
-                    <TextView android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="김냠냠"
-                        android:layout_marginLeft="8dip"/>
-                    <TextView android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="111"
-                        android:layout_marginLeft="23dip"/>
-                    <TextView android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="9. 25"
-                        android:layout_marginLeft="25dip"/>
-                </LinearLayout>
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:layout_weight="1"
-
-                    android:layout_marginTop="5dip">
-                    <TextView android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="2"
-                        android:layout_marginLeft="5dip"/>
-                    <TextView android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="어려워요"
-                        android:layout_marginLeft="17dip"/>
-                    <TextView android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="김몌몌"
-                        android:layout_marginLeft="8dip"/>
-                    <TextView android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="333"
-                        android:layout_marginLeft="23dip"/>
-                    <TextView android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="9. 24"
-                        android:layout_marginLeft="25dip"/>
-                </LinearLayout>
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:layout_weight="1"
-                    android:layout_marginTop="5dip">
-                    <TextView android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="3"
-                        android:layout_marginLeft="5dip"/>
-                    <TextView android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="이게뭐야"
-                        android:layout_marginLeft="17dip"/>
-                    <TextView android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="둘둘기"
-                        android:layout_marginLeft="8dip"/>
-                    <TextView android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="444"
-                        android:layout_marginLeft="23dip"/>
-                    <TextView android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="9. 23"
-                        android:layout_marginLeft="25dip"/>
-                </LinearLayout>
-            </LinearLayout>
+                android:text= "위험"
+                android:textColor="#FF0000"
+                android:textSize="17dip"/>
+            <TextView
+                android:layout_marginTop="140dip"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:text= "92"
+                android:textColor="#848587"
+                android:textSize="15dip"/>
         </RelativeLayout>
-    </RelativeLayout>
-</RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/example2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dip"
+            android:layout_marginRight="10dip">
+
+            <RelativeLayout
+                android:id="@+id/b"
+                android:layout_width="100dip"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dip"
+                android:background="#4DBCE9"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginLeft="10dip"
+                    android:layout_marginTop="3dip"
+                    android:text="내일"
+                    android:textColor="#dbf1fa"
+                    android:textSize="13dip" />
+
+            </RelativeLayout>
+
+            <ImageView
+                android:layout_width="100dip"
+                android:layout_height="100dip"
+                android:layout_below="@id/b"
+                android:layout_gravity="left"
+                android:drawablePadding="4dp"
+                android:src="@drawable/thunderstorms"/>
+            <TextView
+                android:layout_marginTop="120dip"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:text= "주의"
+                android:textColor="#FFD700"
+                android:textSize="17dip"/>
+            <TextView
+                android:layout_marginTop="140dip"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:text= "67"
+                android:textColor="#848587"
+                android:textSize="15dip"/>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/example3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dip"
+            android:layout_marginRight="10dip">
+
+            <RelativeLayout
+                android:id="@+id/c"
+                android:layout_width="100dip"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dip"
+                android:background="#4DBCE9"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:layout_marginLeft="10dip"
+                    android:layout_marginTop="3dip"
+                    android:text="모레"
+                    android:textColor="#dbf1fa"
+                    android:textSize="13dip" />
+
+
+            </RelativeLayout>
+
+            <ImageView
+                android:layout_width="100dip"
+                android:layout_height="100dip"
+                android:layout_marginTop="13dip"
+                android:layout_below="@id/c"
+                android:layout_gravity="left"
+                android:drawablePadding="4dp"
+                android:src="@drawable/snow" />
+            <TextView
+                android:layout_marginTop="120dip"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:text= "관심"
+                android:textColor="#0000FF"
+                android:textSize="17dip"/>
+            <TextView
+                android:layout_marginTop="140dip"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:text= "28"
+                android:textColor="#848587"
+                android:textSize="15dip"/>
+        </RelativeLayout>
+    </LinearLayout>
+</LinearLayout>
