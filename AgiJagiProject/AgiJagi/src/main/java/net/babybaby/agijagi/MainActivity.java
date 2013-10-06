@@ -17,8 +17,8 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
-import net.babybaby.agijagi.cook_facility_search.Cook_facility_search_list;
-import net.babybaby.agijagi.logout.LogoutActivity;
+import net.babybaby.agijagi.cook_facility_search.CookFacilitySearchFragment;
+import net.babybaby.agijagi.cook_facility_search.CookFacilitySearchFragment;
 import net.babybaby.agijagi.notice.NoticeActivity;
 import net.babybaby.agijagi.recipe_detail.Recipe_detail_Activity;
 import net.babybaby.agijagi.recipe_search.Recipe_search_Activity;
@@ -162,7 +162,7 @@ public class MainActivity extends Activity {
 
 
                 case 4:
-                    fragment = new Cook_facility_search_list();
+                    fragment = new CookFacilitySearchFragment();
                     fragmentManager.beginTransaction().replace(R.id.content_frame, fragment).commit();
                     break;
 
@@ -200,7 +200,7 @@ public class MainActivity extends Activity {
                     break;
 
                 case 5:
-                    fragment = new Cook_facility_search_list();
+                    fragment = new CookFacilitySearchFragment();
                     fragmentManager.beginTransaction().replace(R.id.content_frame, fragment).commit();
                     break;
 
@@ -233,7 +233,7 @@ public class MainActivity extends Activity {
                     break;
 
                 case 4:
-                    fragment = new Cook_facility_search_list();
+                    fragment = new CookFacilitySearchFragment();
                     fragmentManager.beginTransaction().replace(R.id.content_frame, fragment).commit();
                     break;
 

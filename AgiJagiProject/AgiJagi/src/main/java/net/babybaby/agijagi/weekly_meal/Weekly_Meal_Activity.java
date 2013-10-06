@@ -16,6 +16,7 @@ import android.os.Handler;
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -35,6 +36,12 @@ public class Weekly_Meal_Activity extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         rootView = inflater.inflate(R.layout.activity_weekly_meal, container, false);
+
+        HttpGetRequest hgr = new HttpGetRequest();
+        String dest = "http://babyhoney.kr/api/getMenu";
+        String url = hgr.getHTML(dest);
+
+        Log.d("url",""+url);
 
         day = new int[8][5];
         day[1][1] = R.id.day1_1;
@@ -69,6 +76,8 @@ public class Weekly_Meal_Activity extends Fragment {
                     HttpGetRequest hgr = new HttpGetRequest();
                     String dest = "http://babyhoney.kr/api/getMenu";
                     String url = hgr.getHTML(dest);
+
+                    Log.d("url",""+url);
 
                     JSONObject response = new JSONObject(url);
                     JSONObject channel = response.getJSONObject("channel");
