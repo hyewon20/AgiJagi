@@ -1,8 +1,10 @@
 package net.babybaby.agijagi.cook_facility_search;
 
+import android.content.SharedPreferences;
+import android.text.Editable;
 import android.util.Log;
-
 import net.babybaby.agijagi.etc.HttpGetRequest;
+import net.babybaby.agijagi.login.Login;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -14,11 +16,21 @@ import java.net.URLEncoder;
  * Created by FlaShilver on 2013. 10. 6..
  */
 public class CFSFThread extends Thread {
+    static boolean IsCook = true;
+    static Editable arg;
+
     public void run() {
 
+        String result = null;
+
         HttpGetRequest hgr = new HttpGetRequest();
-        String arg = "서울";
-        String result = hgr.getHTML("http://babyhoney.kr/api/GetNutritionist/?username=jong327&password=ac619ef29c44938cbf0a619f5029ff47&page=0&offset=2&location=" + URLEncoder.encode(arg));
+        if(IsCook == true){
+            result = hgr.getHTML("http://babyhoney.kr/api/GetNutritionist/?username="+ Login.id+"&password="+Login.password+"&page=0&offset=10&location=" + URLEncoder.encode(String.valueOf(arg)));
+        } else if(IsCook == false){
+            result = hgr.getHTML("http://babyhoney.kr/api/GetOrganization/?page=0&offset=10&location="+ URLEncoder.encode(String.valueOf(arg)));
+        }
+
+        Log.d("id",""+Login.id+Login.password);
 
         Log.d("cfsf", result);
 
@@ -32,13 +44,20 @@ public class CFSFThread extends Thread {
                 CookFacilitySearchModel cfsModel = new CookFacilitySearchModel();
                 cfsModel.setName(obj.getString("name"));
                 Log.d("cfsModel",obj.getString("name"));
-                cfsModel.setCertification_no(obj.getString("certiciation_no"));
-                Log.d("cfsModel",""+obj.getString("certiciation_no"));
+
                 cfsModel.setLocation(obj.getString("location"));
                 Log.d("cfsModel",obj.getString("location"));
                 cfsModel.setTelephone(obj.getString("telephone"));
                 Log.d("cfsModel",obj.getString("telephone"));
+                if(IsCook == true){
+                    cfsModel.setCertification_no(obj.getString("certiciation_no"));
+                    Log.d("cfsModel",""+obj.getString("certiciation_no"));
 
+                } else if(IsCook == false){
+                    cfsModel.setDescription(obj.getString("description"));
+                    Log.d("cfsModel",""+obj.getString("description"));
+
+                }
                 CookFacilitySearchFragment.lists.add(cfsModel);
             }
         } catch (JSONException e) {

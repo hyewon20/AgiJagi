@@ -2,6 +2,7 @@ package net.babybaby.agijagi.cook_facility_search;
 
 import android.app.Fragment;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -11,6 +12,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.Spinner;
@@ -29,18 +31,20 @@ import java.util.ArrayList;
 public class CookFacilitySearchFragment extends Fragment {
 
     ListView listview;
+    EditText edittext;
     static ArrayList<CookFacilitySearchModel> lists;
     CookFacilitySearchAdapter cfsAdapter;
     ArrayAdapter<CharSequence> adspin;
     View rootView;
 
+    boolean IsCook = true;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         rootView = inflater.inflate(R.layout.activity_cook_facility_list, container, false);
 
-
         Spinner spinner = (Spinner) rootView.findViewById(R.id.cook_facility_spinner);
-        spinner.setPrompt("aaaaa");
+        edittext = (EditText) rootView.findViewById(R.id.cook_facility_txt);
 
         adspin = ArrayAdapter.createFromResource(getActivity(), R.array.selected, android.R.layout.simple_spinner_item);
 
@@ -48,6 +52,13 @@ public class CookFacilitySearchFragment extends Fragment {
         spinner.setAdapter(adspin);
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                if(position==0){
+                    Log.d("cook","cook");
+                    IsCook = true;
+                }else if(position==1){
+                    Log.d("facility","facility");
+                    IsCook = false;
+                }
             }
 
             public void onNothingSelected(AdapterView<?> parent) {
@@ -66,15 +77,36 @@ public class CookFacilitySearchFragment extends Fragment {
         listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                CookFacilitySearchModel cfsModel = lists.get(position);
+                Intent intent = new Intent(getActivity(), Cook_facility_search.class);
+                intent.putExtra("name", cfsModel.getName());
+                intent.putExtra("location", cfsModel.getLocation());
+                intent.putExtra("telephone", cfsModel.getTelephone());
+                if(IsCook == true){
+                    intent.putExtra("Certification_no", cfsModel.getCertification_no());
 
+                }else if(CFSFThread.IsCook == false){
+                    intent.putExtra("description", cfsModel.getDescription());
+
+                }
+
+                startActivity(intent);
             }
         });
 
         Button btn = (Button) rootView.findViewById(R.id.cook_facility_btn);
         btn.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
+                cfsAdapter.clear();
+
+                if(IsCook == true){
+                    CFSFThread.IsCook = true;
+                }else if(IsCook == false){
+                    CFSFThread.IsCook = false;
+                }
 
                 try {
+                    CFSFThread.arg = edittext.getText();
                     CFSFThread cfsfThread = new CFSFThread();
                     cfsfThread.start();
                     cfsfThread.join();
@@ -83,7 +115,6 @@ public class CookFacilitySearchFragment extends Fragment {
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
-
             }
         });
 
