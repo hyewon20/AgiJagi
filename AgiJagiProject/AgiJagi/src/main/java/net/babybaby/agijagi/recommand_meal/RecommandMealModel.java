@@ -7,6 +7,16 @@ import java.util.ArrayList;
  */
 public class RecommandMealModel {
 
+    public static String selectid;
+
+    public String getSelectid() {
+        return selectid;
+    }
+
+    public void setSelectid(String selectid) {
+        this.selectid = selectid;
+    }
+
     public String date;
     public static ArrayList<IdnName> idnNames;
 

@@ -5,7 +5,7 @@
     android:versionName="1.0">
 
     <uses-sdk
-        android:minSdkVersion="11"
+        android:minSdkVersion="14"
         android:maxSdkVersion="18"
         android:targetSdkVersion="18" />
 
@@ -32,7 +32,7 @@
 
         <activity android:name=".borad.BoardActivity"></activity>
         <activity android:name=".recipe_detail.RecipeDetailContentsActivity"></activity>
-        <activity android:name=".cook_facility_search.Cook_facility_search"></activity>
+        <activity android:name=".recommand_meal.RecommandMealListActivity"></activity>
     </application>
 
     <uses-permission android:name="android.permission.INTERNET" />

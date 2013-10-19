@@ -21,7 +21,8 @@ import android.widget.TextView;
 
 import net.babybaby.agijagi.R;
 import net.babybaby.agijagi.recipe_detail.Recipe_detail_Activity;
-import net.babybaby.agijagi.recommand_meal.RecommandMealListFragment;
+import net.babybaby.agijagi.recommand_meal.RecommandMealListActivity;
+import net.babybaby.agijagi.recommand_meal.RecommandMealModel;
 import net.babybaby.agijagi.recommand_meal.RecommandMealThread;
 import net.babybaby.agijagi.today_recommand.Today_recommand_Activity;
 
@@ -56,23 +57,11 @@ public class CookSearchFragment extends Fragment {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-
-                Fragment fragment = new RecommandMealListFragment();
-
                 CookModel cookModel = lists.get(position);
-
-                    RecommandMealThread.arg = cookModel.getId();
-                    RecommandMealThread recommandMealThread = new RecommandMealThread();
-                    recommandMealThread.start();
-                    recommandMealThread.run();
-                try {
-                    recommandMealThread.join();
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-
-                FragmentManager fragmentManager = getFragmentManager();
-                fragmentManager.beginTransaction().replace(R.id.content_frame, fragment).commit();
+                Log.d("selectlist",cookModel.getId().toString());
+                Intent intent = new Intent(getActivity(), RecommandMealListActivity.class);
+                intent.putExtra("id",cookModel.getId().toString());
+                startActivity(intent);
             }
         });
 

@@ -26,6 +26,8 @@ public class RecommandMealThread extends Thread {
     public void run() {
         HttpGetRequest hgr = new HttpGetRequest();
 
+        arg = RecommandMealModel.selectid;
+
         String result = hgr.getHTML("http://babyhoney.kr/api/getNutritionRecommend/?user_id="+ URLEncoder.encode(String.valueOf(arg)));
 
         Log.d("resresres",""+result);
@@ -45,9 +47,11 @@ public class RecommandMealThread extends Thread {
                 for(int j=0;j<list.length();j++){
                     JSONObject list_obj = list.getJSONObject(j);
                     recommandMealModel.setIdnNames(list_obj.getString("id"),list_obj.getString("name"));
+
+                    Log.d("issue",""+obj.getString("id")+obj.getString("name"));
                 }
 
-                RecommandMealListFragment.lists.add(recommandMealModel);
+                RecommandMealListActivity.lists.add(recommandMealModel);
             }
 
         } catch (JSONException e) {

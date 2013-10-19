@@ -1,12 +1,9 @@
 package net.babybaby.agijagi.recommand_meal;
 
-import android.annotation.TargetApi;
 import android.app.Activity;
-import android.app.Fragment;
 import android.content.Context;
-import android.os.Build;
+import android.content.Intent;
 import android.os.Bundle;
-import android.text.Layout;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -22,32 +19,36 @@ import java.util.ArrayList;
 /**
  * Created by FlaShilver on 2013. 10. 19..
  */
-@TargetApi(Build.VERSION_CODES.HONEYCOMB)
-public class RecommandMealListFragment extends Fragment {
+public class RecommandMealListActivity extends Activity {
 
     ListView listview;
-    public static ArrayList<RecommandMealModel> lists = null;
+    public static ArrayList<RecommandMealModel> lists;
     private RecommandMealAdapter recommandMealAdapter;
 
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.fragment_recommandmeallist);
 
-        View rootView = inflater.inflate(R.layout.fragment_recommandmeallist, container, false);
+        Intent intent = getIntent();
+        String id = intent.getStringExtra("id");
+        RecommandMealModel.selectid = id;
 
-        Log.d("datadata",""+lists.get(0).getDate());
+        lists= new ArrayList<RecommandMealModel>();
+        listview = (ListView) findViewById(R.id.recommand_meal_list);
+        recommandMealAdapter = new RecommandMealAdapter(RecommandMealListActivity.this, R.layout.row_recommandmeallist, lists);
 
-        listview = (ListView) rootView.findViewById(R.id.recommand_meal_list);
+        try {
+            RecommandMealThread recommandMealThread = new RecommandMealThread();
 
-        lists = new ArrayList<RecommandMealModel>();
+            recommandMealThread.start();
+            recommandMealThread.run();
+            recommandMealThread.join();
+            listview.setAdapter(recommandMealAdapter);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
 
-        recommandMealAdapter = new RecommandMealAdapter(getActivity(), R.layout.row_recommandmeallist, lists);
 
-        recommandMealAdapter.clear();
-
-        listview.setAdapter(recommandMealAdapter);
-
-
-        return rootView;
     }
 
     private class RecommandMealAdapter extends ArrayAdapter<RecommandMealModel> {
@@ -66,10 +67,9 @@ public class RecommandMealListFragment extends Fragment {
             View v = convertView;
 
             if (v == null) {
-                LayoutInflater vi = (LayoutInflater) getActivity().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+                LayoutInflater vi = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
                 v = vi.inflate(R.layout.row_recommandmeallist, null);
             }
-
 
 
             RecommandMealModel areaInfo = items.get(position);
@@ -79,11 +79,8 @@ public class RecommandMealListFragment extends Fragment {
                 TextView recommandhead = (TextView) v.findViewById(R.id.recommand_head);
                 TextView meallist = (TextView) v.findViewById(R.id.meallist);
                 TextView writedate = (TextView) v.findViewById(R.id.date);
-
-                meallist.setText((CharSequence) areaInfo.getIdnNames().toString());
                 writedate.setText(areaInfo.getDate());
             }
-
 
 
             return v;
