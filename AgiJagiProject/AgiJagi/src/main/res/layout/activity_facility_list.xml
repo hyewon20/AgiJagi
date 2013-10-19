@@ -8,24 +8,20 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal">
 
-        <Spinner android:id="@+id/cook_facility_spinner"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:spinnerMode="dropdown" />
-
         <EditText
-            android:id="@+id/cook_facility_txt"
+            android:id="@+id/facility_txt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:hint="지역이름을 검색하세요"
-            android:ems="10" >
+            android:hint="지역이름이나 기관명을 검색하세요"
+            android:singleLine="true"
+            android:ems="10">
 
             <requestFocus />
         </EditText>
 
         <Button
-            android:id="@+id/cook_facility_btn"
+            android:id="@+id/facility_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="검색" />
@@ -33,7 +29,7 @@
     </LinearLayout>
 
     <ListView
-        android:id="@+id/cook_facility_list"
+        android:id="@+id/facility_list"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" >
     </ListView>

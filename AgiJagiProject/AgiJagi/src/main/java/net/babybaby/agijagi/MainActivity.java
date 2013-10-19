@@ -1,8 +1,10 @@
 package net.babybaby.agijagi;
 
+import android.annotation.TargetApi;
 import android.app.FragmentManager;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
+import android.os.Build;
 import android.os.Bundle;
 import android.app.Activity;
 import android.app.Fragment;
@@ -17,12 +19,11 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
-import net.babybaby.agijagi.cook_facility_search.CookFacilitySearchFragment;
-import net.babybaby.agijagi.cook_facility_search.CookFacilitySearchFragment;
+import net.babybaby.agijagi.cooksearch.CookSearchFragment;
+import net.babybaby.agijagi.facilitysearch.FacilitySearchFragment;
 import net.babybaby.agijagi.notice.NoticeActivity;
 import net.babybaby.agijagi.recipe_detail.Recipe_detail_Activity;
 import net.babybaby.agijagi.recipe_search.Recipe_search_Activity;
-import net.babybaby.agijagi.recommand_meal.Recommand_meal_Activity;
 import net.babybaby.agijagi.today_recommand.Today_recommand_Activity;
 import net.babybaby.agijagi.weekly_meal.Weekly_Meal_Activity;
 
@@ -39,6 +40,7 @@ public class MainActivity extends Activity {
     public static String id;
     public static String password;
 
+    @TargetApi(Build.VERSION_CODES.ICE_CREAM_SANDWICH)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -56,11 +58,11 @@ public class MainActivity extends Activity {
         password = prefs.getString("password","null");
 
         if (usertype == 0) {
-            mDrawerTitles = new String[]{"" + prefs.getString("id", "null")+"님 반갑습니다.", "메인화면", "공지사항", "레시피 검색", "영양사/기관 검색", "로그아웃"};
+            mDrawerTitles = new String[]{"" + prefs.getString("id", "null")+"님 반갑습니다.", "메인화면", "공지사항", "레시피 검색", "영양사 검색","기관 검색", "로그아웃"};
         } else if (usertype == 1) {
-            mDrawerTitles = new String[]{"" + prefs.getString("og_name", "null")+"님 반갑습니다.", "메인화면", "공지사항", "주간식단 조회", "레시피 검색", "영양사/기관 검색", "로그아웃"};
+            mDrawerTitles = new String[]{"" + prefs.getString("og_name", "null")+"님 반갑습니다.", "메인화면", "공지사항", "주간식단 조회", "레시피 검색", "영양사 검색","기관 검색", "로그아웃"};
         } else if (usertype == 2) {
-            mDrawerTitles = new String[]{"비회원님 환영합니다.", "메인화면", "공지사항", "레시피 검색", "영양사/기관 검색"};
+            mDrawerTitles = new String[]{"비회원님 환영합니다.", "메인화면", "공지사항", "레시피 검색", "영양사 검색","기관 검색","로그아웃"};
         }
 
         ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this, R.layout.drawer_list_item, mDrawerTitles);
@@ -136,6 +138,7 @@ public class MainActivity extends Activity {
         }
     }
 
+    @TargetApi(Build.VERSION_CODES.HONEYCOMB)
     private void selectItem(int position) {
         //Create a new fragment and specify the planet to show based on position
         Fragment fragment = null;
@@ -162,13 +165,17 @@ public class MainActivity extends Activity {
 
 
                 case 4:
-                    fragment = new CookFacilitySearchFragment();
+                    fragment = new CookSearchFragment();
                     fragmentManager.beginTransaction().replace(R.id.content_frame, fragment).commit();
                     break;
 
                 case 5:
-                    finish();
+                    fragment = new FacilitySearchFragment();
+                    fragmentManager.beginTransaction().replace(R.id.content_frame, fragment).commit();
+                    break;
 
+                case 6:
+                    finish();
                     break;
 
                 default:
@@ -200,12 +207,16 @@ public class MainActivity extends Activity {
                     break;
 
                 case 5:
-                    fragment = new CookFacilitySearchFragment();
+                    fragment = new CookSearchFragment();
                     fragmentManager.beginTransaction().replace(R.id.content_frame, fragment).commit();
                     break;
 
                 case 6:
+                    fragment = new FacilitySearchFragment();
+                    fragmentManager.beginTransaction().replace(R.id.content_frame, fragment).commit();
+                    break;
 
+                case 7:
                     finish();
                     break;
 
@@ -233,8 +244,17 @@ public class MainActivity extends Activity {
                     break;
 
                 case 4:
-                    fragment = new CookFacilitySearchFragment();
+                    fragment = new CookSearchFragment();
                     fragmentManager.beginTransaction().replace(R.id.content_frame, fragment).commit();
+                    break;
+
+                case 5:
+                    fragment = new FacilitySearchFragment();
+                    fragmentManager.beginTransaction().replace(R.id.content_frame, fragment).commit();
+                    break;
+
+                case 6:
+                    finish();
                     break;
 
 
@@ -247,6 +267,7 @@ public class MainActivity extends Activity {
         mDrawerLayout.closeDrawer(mDrawerList);
     }
 
+    @TargetApi(Build.VERSION_CODES.HONEYCOMB)
     @Override
     public void setTitle(CharSequence title) {
         mTitle = title;
