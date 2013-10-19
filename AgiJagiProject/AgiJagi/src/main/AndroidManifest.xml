@@ -33,6 +33,9 @@
         <activity android:name=".borad.BoardActivity"></activity>
         <activity android:name=".recipe_detail.RecipeDetailContentsActivity"></activity>
         <activity android:name=".cook_facility_search.Cook_facility_search"></activity>
+        <activity android:name=".weekly_meal.WeeklyMealMainActivity"/>
+        <activity android:name=".weekly_meal.WeeklyMealInfoFragment"/>
+        <activity android:name=".weekly_meal.WeeklyMealListFragment"/>
     </application>
 
     <uses-permission android:name="android.permission.INTERNET" />
