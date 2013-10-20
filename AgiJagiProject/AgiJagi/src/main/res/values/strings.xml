@@ -20,4 +20,15 @@
     <string name="drawer_close">Close navigation drawer</string>
     <string name="action_websearch">Web search</string>
     <string name="app_not_available">Sorry, there\'s no web browser available</string>
+
+    <!-- Organization -->
+    <string name="organization_title">Organization Title</string>
+    <string name="no_organization_address">기관 주소 정보가 존재하지 않습니다.</string>
+    <string name="no_organization_telephone">기관 연락처 정보가 존재하지 않습니다.</string>
+
+    <!-- Comments -->
+    <string name="comments">댓글</string>
+    <string name="comment_id">Comment ID</string>
+    <string name="comment_message">Comment Message</string>
+    <string name="comment_detail">Comment Time</string>
 </resources>

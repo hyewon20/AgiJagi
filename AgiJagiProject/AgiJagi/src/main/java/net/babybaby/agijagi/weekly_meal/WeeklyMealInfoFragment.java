@@ -153,7 +153,7 @@ public class WeeklyMealInfoFragment extends Fragment {
                 TextView org_telephone=(TextView)v.findViewById(R.id.row_org_telephone);
 
                 org_name.setText(name);
-                org_name.setText(address);
+                org_address.setText(address);
                 org_telephone.setText(telephone);
             }
             else

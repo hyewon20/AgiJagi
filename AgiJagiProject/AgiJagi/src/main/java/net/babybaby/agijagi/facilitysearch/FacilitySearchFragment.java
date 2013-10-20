@@ -55,8 +55,8 @@ public class FacilitySearchFragment extends Fragment {
                 */
                 FacilityModel FacilityModel = lists.get(position);
                 Intent intent = new Intent(getActivity(), WeeklyMealMainActivity.class);
-                intent.putExtra("name", FacilityModel.getName());
                 intent.putExtra("id", FacilityModel.getID());
+                intent.putExtra("name", FacilityModel.getName());
                 intent.putExtra("address", FacilityModel.getAddress());
                 intent.putExtra("telephone", FacilityModel.getTelephone());
                 startActivity(intent);
