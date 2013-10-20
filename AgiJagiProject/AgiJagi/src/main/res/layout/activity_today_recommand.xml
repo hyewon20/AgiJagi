@@ -3,20 +3,6 @@
     android:layout_height="match_parent"
     android:orientation="vertical">    <!-- The main content view -->
 
-    <RelativeLayout
-        android:layout_width="fill_parent"
-        android:layout_height="33dip"
-        android:background="#556270">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:text="메인화면"
-            android:textColor="#dddfe2"
-            android:textSize="23dip"
-            android:textStyle="bold" />
-    </RelativeLayout>
 
     <RelativeLayout
         android:layout_width="fill_parent"
@@ -36,6 +22,7 @@
 
 
     <LinearLayout
+        android:id="@+id/idid"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
