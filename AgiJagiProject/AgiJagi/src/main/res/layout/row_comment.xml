@@ -3,24 +3,30 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
               android:orientation="vertical"
               android:layout_width="match_parent"
-              android:layout_height="wrap_content">
+              android:layout_height="wrap_content"
+              android:layout_marginTop="10dp"
+              android:layout_marginBottom="10dp"
+              android:paddingLeft="10dp"
+              android:paddingRight="10dp">
 
     <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="New Text"
+            android:text="@string/comment_id"
             android:id="@+id/row_comment_user_id"
+            android:textStyle="bold"
             android:layout_gravity="left|center_vertical"/>
     <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="New Text"
+            android:text="@string/comment_message"
             android:id="@+id/row_comment_message"
             android:layout_gravity="left|center_vertical"/>
     <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="New Text"
+            android:text="@string/comment_detail"
+            android:textColor="#A8A7A7"
             android:id="@+id/row_comment_info"
-            android:layout_gravity="right|center_vertical"/>
+            android:layout_gravity="left|center_vertical"/>
 </LinearLayout>
