@@ -30,10 +30,11 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".borad.BoardActivity"></activity>
+        <activity android:name=".notice.borad.BoardActivity"></activity>
         <activity android:name=".recipe_detail.RecipeDetailContentsActivity"></activity>
-        <activity android:name=".recommand_meal.RecommandMealListActivity"></activity>
+        <activity android:name=".cooksearch.recommandmeal.RecommandMealListActivity"></activity>
         <activity android:name=".weekly_meal.WeeklyMealMainActivity"/>
+        <activity android:name=".cooksearch.recommandmeal.mealnutrient.MealNutrientActivity"/>
     </application>
 
     <uses-permission android:name="android.permission.INTERNET" />

@@ -1,17 +1,15 @@
 package net.babybaby.agijagi.notice;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 
 import javax.xml.transform.Source;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-import net.babybaby.agijagi.borad.BoardActivity;
+import net.babybaby.agijagi.notice.borad.BoardActivity;
 import net.babybaby.agijagi.etc.HttpGetRequest;
 
 import android.app.Fragment;
-import android.app.FragmentManager;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;

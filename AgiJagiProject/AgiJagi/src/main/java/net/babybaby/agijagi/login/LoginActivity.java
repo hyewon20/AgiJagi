@@ -43,7 +43,6 @@ public class LoginActivity extends Activity {
                 try{
                     Login.id = id_edittext.getText().toString();
                     Login.password = MD5.getMD5Hash(pw_edittext.getText().toString());
-                    Log.d("MD5",""+Login.id+","+Login.password);
 
                     LoginThread worker = new LoginThread();
                     worker.start();

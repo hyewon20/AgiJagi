@@ -22,8 +22,6 @@ public class LoginThread extends Thread {
         HttpGetRequest hgr = new HttpGetRequest();
         String url = hgr.getHTML("http://babyhoney.kr/index.php/api/loginUser/?username="+Login.id+"&password="+Login.password);
 
-        Log.d("result2",""+url);
-
         try {
             JSONObject response = new JSONObject(url);
             JSONObject channel = response.getJSONObject("channel");

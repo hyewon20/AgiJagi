@@ -1,4 +1,4 @@
-package net.babybaby.agijagi.recommand_meal;
+package net.babybaby.agijagi.cooksearch.recommandmeal;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
@@ -16,10 +16,10 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.AbsListView;
 import android.widget.AbsListView.OnScrollListener;
 
 import net.babybaby.agijagi.R;
+import net.babybaby.agijagi.cooksearch.recommandmeal.mealnutrient.MealNutrientActivity;
 import net.babybaby.agijagi.etc.HttpGetRequest;
 
 import org.json.JSONArray;
@@ -34,7 +34,7 @@ import java.util.ArrayList;
 public class RecommandMealListActivity extends Activity {
 
     ListView listview;
-    public static ArrayList<RecommandMealModel> lists;
+    public ArrayList<RecommandMealModel> lists= new ArrayList<RecommandMealModel>();
     private RecommandMealAdapter recommandMealAdapter;
     private boolean loading;
     private boolean end_bool;
@@ -46,14 +46,13 @@ public class RecommandMealListActivity extends Activity {
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.fragment_recommandmeallist);
+        setContentView(R.layout.defaultlist);
 
         Intent intent = getIntent();
         String id = intent.getStringExtra("id");
         RecommandMealModel.selectid = id;
 
-        lists = new ArrayList<RecommandMealModel>();
-        listview = (ListView) findViewById(R.id.recommand_meal_list);
+        listview = (ListView) findViewById(R.id.list);
         recommandMealAdapter = new RecommandMealAdapter(RecommandMealListActivity.this, R.layout.row_recommandmeallist, lists);
         listview.setAdapter(recommandMealAdapter);
 
@@ -61,6 +60,16 @@ public class RecommandMealListActivity extends Activity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
+                ArrayList<String> ids = new ArrayList<String>();
+                for(int i=0; i<lists.get(position).getIdnNames().size();i++){
+                    ids.add(lists.get(position).getIdnNames().get(i).id);
+                }
+
+                Log.d("ids",ids.toString());
+
+                Intent intent = new Intent(RecommandMealListActivity.this, MealNutrientActivity.class);
+                intent.putExtra("id_array", ids);
+                startActivity(intent);
             }
         });
 
@@ -95,7 +104,7 @@ public class RecommandMealListActivity extends Activity {
                             recommandMealModel.setIdnNames(list_obj.getString("id"), list_obj.getString("name"));
 
                         }
-                        RecommandMealListActivity.lists.add(recommandMealModel);
+                        lists.add(recommandMealModel);
 
                     }
                     Thread.sleep(1000);
@@ -127,7 +136,7 @@ public class RecommandMealListActivity extends Activity {
         previousTotal = 0;
         recommandMealAdapter.clear();
         lists = new ArrayList<RecommandMealModel>();
-        listview = (ListView) findViewById(R.id.recommand_meal_list);
+        listview = (ListView) findViewById(R.id.list);
         recommandMealAdapter = new RecommandMealAdapter(RecommandMealListActivity.this, R.layout.row_recommandmeallist, lists);
         listview.setAdapter(recommandMealAdapter);
 
@@ -175,23 +184,19 @@ public class RecommandMealListActivity extends Activity {
         public View getView(int position, View convertView, ViewGroup parent) {
             View v = convertView;
 
-            Log.d("getviewcall","call");
-
             if (v == null) {
                 LayoutInflater vi = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
                 v = vi.inflate(R.layout.row_recommandmeallist, null);
             }
 
-
             RecommandMealModel areaInfo = items.get(position);
-
 
             if (areaInfo != null) {
                 TextView recommandhead = (TextView) v.findViewById(R.id.recommand_head);
                 TextView meallist = (TextView) v.findViewById(R.id.meallist);
                 TextView writedate = (TextView) v.findViewById(R.id.date);
 
-                String mealtext = null;
+                String mealtext="";
 
                 for(int i=0;i<areaInfo.getIdnNames().size();i++){
                     mealtext += areaInfo.getIdnNames().get(i).name +",";

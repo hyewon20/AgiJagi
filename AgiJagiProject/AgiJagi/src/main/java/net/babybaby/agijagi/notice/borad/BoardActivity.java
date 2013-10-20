@@ -1,4 +1,4 @@
-package net.babybaby.agijagi.borad;
+package net.babybaby.agijagi.notice.borad;
 
 import android.app.Activity;
 import android.content.Intent;

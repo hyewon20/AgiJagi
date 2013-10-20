@@ -2,7 +2,6 @@ package net.babybaby.agijagi.cooksearch;
 
 import android.annotation.TargetApi;
 import android.app.Fragment;
-import android.app.FragmentManager;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
@@ -20,11 +19,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import net.babybaby.agijagi.R;
-import net.babybaby.agijagi.recipe_detail.Recipe_detail_Activity;
-import net.babybaby.agijagi.recommand_meal.RecommandMealListActivity;
-import net.babybaby.agijagi.recommand_meal.RecommandMealModel;
-import net.babybaby.agijagi.recommand_meal.RecommandMealThread;
-import net.babybaby.agijagi.today_recommand.Today_recommand_Activity;
+import net.babybaby.agijagi.cooksearch.recommandmeal.RecommandMealListActivity;
 
 import java.util.ArrayList;
 
@@ -58,7 +53,6 @@ public class CookSearchFragment extends Fragment {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
                 CookModel cookModel = lists.get(position);
-                Log.d("selectlist",cookModel.getId().toString());
                 Intent intent = new Intent(getActivity(), RecommandMealListActivity.class);
                 intent.putExtra("id",cookModel.getId().toString());
                 startActivity(intent);
