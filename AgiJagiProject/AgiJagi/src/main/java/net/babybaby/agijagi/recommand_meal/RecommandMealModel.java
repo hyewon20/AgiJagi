@@ -1,5 +1,7 @@
 package net.babybaby.agijagi.recommand_meal;
 
+import android.util.Log;
+
 import java.util.ArrayList;
 
 /**
@@ -8,6 +10,18 @@ import java.util.ArrayList;
 public class RecommandMealModel {
 
     public static String selectid;
+    public String recommandHeader;
+
+    public String getRecommandHeader() {
+        return recommandHeader;
+    }
+
+    public void setRecommandHeader(String recommandHeader) {
+        this.recommandHeader = recommandHeader;
+    }
+
+    public String date;
+    public static ArrayList<IdnName> idnNames;
 
     public String getSelectid() {
         return selectid;
@@ -17,15 +31,12 @@ public class RecommandMealModel {
         this.selectid = selectid;
     }
 
-    public String date;
-    public static ArrayList<IdnName> idnNames;
-
     public String getDate() {
         return date;
     }
 
     public void setDate(String date) {
-        this.date = date;
+       this.date = date;
     }
 
     public ArrayList<IdnName> getIdnNames() {
@@ -33,18 +44,17 @@ public class RecommandMealModel {
     }
 
     public void setIdnNames(String id, String name) {
-        if(idnNames==null) {
+        if (idnNames == null) {
             this.idnNames = new ArrayList<IdnName>();
             this.idnNames.add(new IdnName(id, name));
-        }
-        else{
+        } else {
             this.idnNames.add(new IdnName(id, name));
         }
     }
 
-    private class IdnName extends ArrayList {
-        String id;
-        String name;
+    public class IdnName {
+        public String id;
+        public String name;
 
         private IdnName(String id, String name) {
             this.id = id;

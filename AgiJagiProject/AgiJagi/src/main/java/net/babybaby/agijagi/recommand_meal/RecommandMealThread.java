@@ -46,9 +46,6 @@ public class RecommandMealThread extends Thread {
                 JSONArray list = obj.getJSONArray("list");
                 for(int j=0;j<list.length();j++){
                     JSONObject list_obj = list.getJSONObject(j);
-                    recommandMealModel.setIdnNames(list_obj.getString("id"),list_obj.getString("name"));
-
-                    Log.d("issue",""+obj.getString("id")+obj.getString("name"));
                 }
 
                 RecommandMealListActivity.lists.add(recommandMealModel);

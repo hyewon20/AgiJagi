@@ -5,10 +5,19 @@ package net.babybaby.agijagi.facilitysearch;
  */
 public class FacilityModel {
 
+    private int id;
     private String name;
     private int type;
     private String address;
     private String telephone;
+
+    public int getID() {
+        return id;
+    }
+
+    public void setID(int id) {
+        this.id=id;
+    }
 
     public String getName() {
         return name;

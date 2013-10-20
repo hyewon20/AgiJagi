@@ -3,19 +3,17 @@ package net.babybaby.agijagi.facilitysearch;
 import android.annotation.TargetApi;
 import android.app.Fragment;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.ListView;
-import android.widget.TextView;
+import android.widget.*;
 
 import net.babybaby.agijagi.R;
+import net.babybaby.agijagi.weekly_meal.WeeklyMealMainActivity;
 
 import java.util.ArrayList;
 
@@ -43,10 +41,10 @@ public class FacilitySearchFragment extends Fragment {
 
         facilitySearchAdapter = new FacilitySearchAdapter(getActivity(), R.layout.row_facility, lists);
 
-/*
         listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                /*
                 FacilityModel FacilityModel = lists.get(position);
                 Intent intent = new Intent(getActivity(), Cook_facility_search.class);
                 intent.putExtra("name", FacilityModel.getName());
@@ -54,9 +52,16 @@ public class FacilitySearchFragment extends Fragment {
                 intent.putExtra("Certification_no", FacilityModel.getCertification_no());
                 intent.putExtra("join_date", FacilityModel.getJoin_date());
                 startActivity(intent);
+                */
+                FacilityModel FacilityModel = lists.get(position);
+                Intent intent = new Intent(getActivity(), WeeklyMealMainActivity.class);
+                intent.putExtra("name", FacilityModel.getName());
+                intent.putExtra("id", FacilityModel.getID());
+                intent.putExtra("address", FacilityModel.getAddress());
+                intent.putExtra("telephone", FacilityModel.getTelephone());
+                startActivity(intent);
             }
         });
-        */
 
         Button btn = (Button) rootView.findViewById(R.id.facility_btn);
         btn.setOnClickListener(new View.OnClickListener() {

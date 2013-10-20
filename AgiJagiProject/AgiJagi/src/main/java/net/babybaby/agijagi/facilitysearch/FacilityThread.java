@@ -35,6 +35,7 @@ public class FacilityThread extends Thread {
                 JSONObject obj = item.getJSONObject(i);
                 FacilityModel facilityModel = new FacilityModel();
 
+                facilityModel.setID(obj.getInt("id"));
                 facilityModel.setName(obj.getString("name"));
                 facilityModel.setType(obj.getInt("type"));
                 facilityModel.setTelephone(obj.getString("telephone"));

@@ -2,6 +2,7 @@ package net.babybaby.agijagi.weekly_meal;
 
 import java.util.Calendar;
 
+import android.app.ActionBar;
 import org.apache.http.client.HttpClient;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.json.JSONArray;
@@ -30,7 +31,6 @@ public class Weekly_Meal_Activity extends Fragment {
     Handler mHandler = new Handler();
     private int[][] day;
     View rootView = null;
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
