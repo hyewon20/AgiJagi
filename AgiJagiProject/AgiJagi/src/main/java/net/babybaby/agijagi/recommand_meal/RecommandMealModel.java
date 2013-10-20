@@ -11,6 +11,13 @@ public class RecommandMealModel {
 
     public static String selectid;
     public String recommandHeader;
+    public String date;
+    public ArrayList<IdnName> idnNames;
+
+    public RecommandMealModel()
+    {
+        this.idnNames = new ArrayList<IdnName>();
+    }
 
     public String getRecommandHeader() {
         return recommandHeader;
@@ -19,9 +26,6 @@ public class RecommandMealModel {
     public void setRecommandHeader(String recommandHeader) {
         this.recommandHeader = recommandHeader;
     }
-
-    public String date;
-    public static ArrayList<IdnName> idnNames;
 
     public String getSelectid() {
         return selectid;
@@ -44,12 +48,7 @@ public class RecommandMealModel {
     }
 
     public void setIdnNames(String id, String name) {
-        if (idnNames == null) {
-            this.idnNames = new ArrayList<IdnName>();
-            this.idnNames.add(new IdnName(id, name));
-        } else {
-            this.idnNames.add(new IdnName(id, name));
-        }
+        this.idnNames.add(new IdnName(id, name));
     }
 
     public class IdnName {

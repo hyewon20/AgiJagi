@@ -48,7 +48,7 @@ public class RecommandMealThread extends Thread {
                     JSONObject list_obj = list.getJSONObject(j);
                 }
 
-                RecommandMealListActivity.lists.add(recommandMealModel);
+                //lists.add(recommandMealModel);
             }
 
         } catch (JSONException e) {
