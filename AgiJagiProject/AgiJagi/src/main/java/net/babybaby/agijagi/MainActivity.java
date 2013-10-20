@@ -2,6 +2,7 @@ package net.babybaby.agijagi;
 
 import android.annotation.TargetApi;
 import android.app.FragmentManager;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.os.Build;
@@ -21,6 +22,7 @@ import android.widget.ListView;
 
 import net.babybaby.agijagi.cooksearch.CookSearchFragment;
 import net.babybaby.agijagi.facilitysearch.FacilitySearchFragment;
+import net.babybaby.agijagi.login.LoginActivity;
 import net.babybaby.agijagi.notice.NoticeActivity;
 import net.babybaby.agijagi.recipe_detail.Recipe_detail_Activity;
 import net.babybaby.agijagi.today_recommand.Today_recommand_Activity;
@@ -174,7 +176,8 @@ public class MainActivity extends Activity {
                     break;
 
                 case 6:
-                    finish();
+                    Intent intent = new Intent(MainActivity.this, LoginActivity.class);
+                    startActivity(intent);
                     break;
 
                 default:
@@ -216,7 +219,8 @@ public class MainActivity extends Activity {
                     break;
 
                 case 7:
-                    finish();
+                    Intent intent = new Intent(MainActivity.this, LoginActivity.class);
+                    startActivity(intent);
                     break;
 
                 default:
@@ -253,7 +257,8 @@ public class MainActivity extends Activity {
                     break;
 
                 case 6:
-                    finish();
+                    Intent intent = new Intent(MainActivity.this, LoginActivity.class);
+                    startActivity(intent);
                     break;
 
 

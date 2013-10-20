@@ -57,6 +57,7 @@
                 android:orientation="vertical">
 
                 <TextView
+                    android:id="@+id/textview1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="29dip"
@@ -68,6 +69,7 @@
             </LinearLayout>
 
             <ImageView
+                android:id="@+id/imageview1"
                 android:layout_width="110dip"
                 android:layout_height="100dip"
                 android:layout_below="@id/a"
@@ -93,6 +95,7 @@
                 android:orientation="vertical">
 
                 <TextView
+                    android:id="@+id/textview2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="14dip"
@@ -104,6 +107,7 @@
             </LinearLayout>
 
             <ImageView
+                android:id="@+id/imageview2"
                 android:layout_width="110dip"
                 android:layout_height="100dip"
                 android:layout_below="@id/a"
@@ -128,6 +132,7 @@
                 android:orientation="vertical">
 
                 <TextView
+                    android:id="@+id/textview3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="15dip"
@@ -139,6 +144,7 @@
             </LinearLayout>
 
             <ImageView
+                android:id="@+id/imageview3"
                 android:layout_width="110dip"
                 android:layout_height="100dip"
                 android:layout_below="@id/a"
