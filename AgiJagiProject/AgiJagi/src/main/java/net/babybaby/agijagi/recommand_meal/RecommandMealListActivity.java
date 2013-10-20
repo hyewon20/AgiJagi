@@ -19,7 +19,6 @@ import android.widget.TextView;
 import android.widget.AbsListView;
 import android.widget.AbsListView.OnScrollListener;
 
-
 import net.babybaby.agijagi.R;
 import net.babybaby.agijagi.etc.HttpGetRequest;
 
@@ -200,8 +199,6 @@ public class RecommandMealListActivity extends Activity {
                 meallist.setText(mealtext);
                 recommandhead.setText(areaInfo.getRecommandHeader());
                 writedate.setText(areaInfo.getDate());
-
-
             }
 
             return v;

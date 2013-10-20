@@ -23,7 +23,6 @@ import net.babybaby.agijagi.cooksearch.CookSearchFragment;
 import net.babybaby.agijagi.facilitysearch.FacilitySearchFragment;
 import net.babybaby.agijagi.notice.NoticeActivity;
 import net.babybaby.agijagi.recipe_detail.Recipe_detail_Activity;
-import net.babybaby.agijagi.recipe_search.Recipe_search_Activity;
 import net.babybaby.agijagi.today_recommand.Today_recommand_Activity;
 import net.babybaby.agijagi.weekly_meal.Weekly_Meal_Activity;
 
