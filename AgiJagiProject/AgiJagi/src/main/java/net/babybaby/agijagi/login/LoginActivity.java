@@ -49,6 +49,10 @@ public class LoginActivity extends Activity {
 
                     worker.join();
 
+                    MainViewThread mvt = new MainViewThread();
+                    mvt.start();
+                    mvt.join();
+
                 }catch (InterruptedException e) {
                     e.printStackTrace();
                 }

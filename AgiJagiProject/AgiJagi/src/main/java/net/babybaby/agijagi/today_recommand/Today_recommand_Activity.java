@@ -34,8 +34,15 @@ public class Today_recommand_Activity extends Fragment {
 
     ArrayList<TodayRecommandModel> al = new ArrayList<TodayRecommandModel>();
     private Handler mHandler = new Handler();
-    LinearLayout ll;
     private boolean loading;
+
+    ImageView imageView1;
+    ImageView imageView2;
+    ImageView imageView3;
+
+    TextView textview1;
+    TextView textview2;
+    TextView textview3;
 
 
     @Override
@@ -43,19 +50,17 @@ public class Today_recommand_Activity extends Fragment {
                              Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.activity_today_recommand, container, false);
 
-        //       ll = (LinearLayout) rootView.findViewById(R.id.idid);
-/*
-        ImageView imageView1 = (ImageView) rootView.findViewById(R.id.imageview1);
-        ImageView imageView2 = (ImageView) rootView.findViewById(R.id.imageview2);
-        ImageView imageView3 = (ImageView) rootView.findViewById(R.id.imageview3);
 
-        TextView textview1 = (TextView) rootView.findViewById(R.id.textview1);
-        TextView textview2 = (TextView) rootView.findViewById(R.id.textview2);
-        TextView textview3 = (TextView) rootView.findViewById(R.id.textview3);
-*/
-        //updatescreen();
+        imageView1 = (ImageView) rootView.findViewById(R.id.imageview1);
+        imageView2 = (ImageView) rootView.findViewById(R.id.imageview2);
+        imageView3 = (ImageView) rootView.findViewById(R.id.imageview3);
 
-
+        textview1 = (TextView) rootView.findViewById(R.id.textview1);
+        textview2 = (TextView) rootView.findViewById(R.id.textview2);
+        textview3 = (TextView) rootView.findViewById(R.id.textview3);
+         /*
+        updatescreen();
+           */
         return rootView;
     }
 /*
@@ -66,7 +71,7 @@ public class Today_recommand_Activity extends Fragment {
             public void run() {
                 try {
                     HttpGetRequest hgr = new HttpGetRequest();
-                    ;
+
 
                     String result = hgr.getHTML("http://babyhoney.kr/api/getRecentRecommends");
 
@@ -81,12 +86,9 @@ public class Today_recommand_Activity extends Fragment {
                             JSONObject j_name = list.getJSONObject(j);
                             JSONObject j_img_ = list.getJSONObject(j);
 
-                            int id = j_id.getInt("id");
-                            String name = j_name.getString("name");
-                            String img = j_img_.getString("image");
-                            trm.setId(id);
-                            trm.setName(name);
-                            trm.setImg(img);
+                            trm.setId(j_id.getInt("id"));
+                            trm.setName(j_name.getString("name"));
+                            trm.setImg(j_img_.getString("image"));
 
                             al.add(trm);
                         }
@@ -98,37 +100,15 @@ public class Today_recommand_Activity extends Fragment {
                 }
                 mHandler.post(new Runnable() {
                     public void run() {
-
-                        setAimage(al);
                         loading = true;
+                        textview1.setText(al.get(0).getName());
+                        textview2.setText(al.get(1).getName());
+                        textview3.setText(al.get(2).getName());
                         dialog.hide();
                     }
                 });
             }
         }.start();
     }
-
-    private void setAimage(ArrayList al) {
-
-        View v = null;
-
-        if (v == null) {
-
-            LayoutInflater vi = (LayoutInflater) getActivity().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            v = vi.inflate(R.id.idid, null);
-        }
-
-        ImageView imageView1 = (ImageView) v.findViewById(R.id.imageview1);
-        ImageView imageView2 = (ImageView) v.findViewById(R.id.imageview2);
-        ImageView imageView3 = (ImageView) v.findViewById(R.id.imageview3);
-
-        TextView textview1 = (TextView) v.findViewById(R.id.textview1);
-        TextView textview2 = (TextView) v.findViewById(R.id.textview2);
-        TextView textview3 = (TextView) v.findViewById(R.id.textview3);
-
-        textview1.setText(al.get(0).toString());
-        textview1.setText(al.get(1).toString());
-        textview1.setText(al.get(2).toString());
-    }  */
-
+    */
 }
