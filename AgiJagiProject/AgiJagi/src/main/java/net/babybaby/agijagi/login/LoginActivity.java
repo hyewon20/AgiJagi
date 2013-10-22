@@ -14,6 +14,8 @@ import android.widget.Toast;
 import net.babybaby.agijagi.MainActivity;
 import net.babybaby.agijagi.R;
 import net.babybaby.agijagi.etc.MD5;
+import net.babybaby.agijagi.today_recommand.TodayRecommandModel;
+import net.babybaby.agijagi.today_recommand.Today_recommand_Activity;
 
 /**
  * Created by FlaShilver on 2013. 9. 27..
@@ -46,7 +48,6 @@ public class LoginActivity extends Activity {
 
                     LoginThread worker = new LoginThread();
                     worker.start();
-
                     worker.join();
 
                     MainViewThread mvt = new MainViewThread();

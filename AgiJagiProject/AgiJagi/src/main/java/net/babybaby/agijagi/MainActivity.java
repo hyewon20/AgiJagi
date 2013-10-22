@@ -25,8 +25,11 @@ import net.babybaby.agijagi.facilitysearch.FacilitySearchFragment;
 import net.babybaby.agijagi.login.LoginActivity;
 import net.babybaby.agijagi.notice.NoticeActivity;
 import net.babybaby.agijagi.recipe_detail.Recipe_detail_Activity;
+import net.babybaby.agijagi.today_recommand.TodayRecommandModel;
 import net.babybaby.agijagi.today_recommand.Today_recommand_Activity;
 import net.babybaby.agijagi.weekly_meal.Weekly_Meal_Activity;
+
+import java.util.ArrayList;
 
 public class MainActivity extends Activity {
 
@@ -40,6 +43,8 @@ public class MainActivity extends Activity {
     public static int usertype;
     public static String id;
     public static String password;
+
+    public ArrayList<TodayRecommandModel> trm;
 
     @TargetApi(Build.VERSION_CODES.ICE_CREAM_SANDWICH)
     @Override

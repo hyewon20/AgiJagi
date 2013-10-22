@@ -4,6 +4,7 @@ import android.util.Log;
 
 import net.babybaby.agijagi.etc.HttpGetRequest;
 import net.babybaby.agijagi.today_recommand.TodayRecommandModel;
+import net.babybaby.agijagi.today_recommand.Today_recommand_Activity;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -30,8 +31,9 @@ public class MainViewThread extends Thread {
             response = new JSONObject(result);
             JSONObject channel = response.getJSONObject("channel");
             JSONArray item = channel.getJSONArray("item");
-            for (int i = 0; i < item.length(); i++) {
-                JSONArray list = item.getJSONArray(i);
+            for (int i = 0; i < 3; i++) {
+                JSONObject obj = item.getJSONObject(i);
+                JSONArray list = obj.getJSONArray("list");
                 for (int j = 0; j < 1; j++) {
                     TodayRecommandModel trm = new TodayRecommandModel();
                     JSONObject j_id = list.getJSONObject(j);
@@ -43,16 +45,13 @@ public class MainViewThread extends Thread {
                     trm.setImg(j_img_.getString("image"));
 
                     Log.d("idid", ""+j_id.getInt("id"));
-                    Log.d("namename", ""+j_id.getInt("name"));
-                    Log.d("imageimg", ""+j_id.getInt("image"));
-                    al.add(trm);
+                    Log.d("namename", ""+j_id.getString("name"));
+                    Log.d("imageimg", ""+j_id.getString("image"));
+                    Today_recommand_Activity.al.add(trm);
                 }
             }
         } catch (JSONException e) {
             e.printStackTrace();
         }
-
-
-
     }
 }

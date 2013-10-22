@@ -34,7 +34,7 @@
             android:layout_height="wrap_content"
             android:layout_marginRight="10dip">
 
-            <LinearLayout
+            <RelativeLayout
                 android:id="@+id/a"
                 android:layout_width="100dip"
                 android:layout_height="wrap_content"
@@ -47,13 +47,12 @@
                     android:id="@+id/textview1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="29dip"
-                    android:gravity="center_horizontal"
+                    android:layout_centerHorizontal="true"
                     android:text="비빔밥"
                     android:textColor="#939393"
                     android:textSize="17dip" />
 
-            </LinearLayout>
+            </RelativeLayout>
 
             <ImageView
                 android:id="@+id/imageview1"
@@ -72,7 +71,7 @@
             android:layout_height="wrap_content"
             android:layout_marginRight="10dip">
 
-            <LinearLayout
+            <RelativeLayout
                 android:id="@+id/a"
                 android:layout_width="100dip"
                 android:layout_height="wrap_content"
@@ -85,13 +84,12 @@
                     android:id="@+id/textview2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="14dip"
-                    android:gravity="center_horizontal"
+                    android:layout_centerHorizontal="true"
                     android:text="브로콜리죽"
                     android:textColor="#939393"
                     android:textSize="17dip" />
 
-            </LinearLayout>
+            </RelativeLayout>
 
             <ImageView
                 android:id="@+id/imageview2"
@@ -109,7 +107,7 @@
             android:layout_height="wrap_content"
             android:layout_marginRight="10dip">
 
-            <LinearLayout
+            <RelativeLayout
                 android:id="@+id/a"
                 android:layout_width="100dip"
                 android:layout_height="wrap_content"
@@ -122,13 +120,12 @@
                     android:id="@+id/textview3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="15dip"
-                    android:gravity="center_horizontal"
+                    android:layout_centerHorizontal="true"
                     android:text="오징어튀김"
                     android:textColor="#939393"
                     android:textSize="17dip" />
 
-            </LinearLayout>
+            </RelativeLayout>
 
             <ImageView
                 android:id="@+id/imageview3"
