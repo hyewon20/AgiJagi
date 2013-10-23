@@ -44,15 +44,6 @@ public class FacilitySearchFragment extends Fragment {
         listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                /*
-                FacilityModel FacilityModel = lists.get(position);
-                Intent intent = new Intent(getActivity(), Cook_facility_search.class);
-                intent.putExtra("name", FacilityModel.getName());
-                intent.putExtra("id", FacilityModel.getId());
-                intent.putExtra("Certification_no", FacilityModel.getCertification_no());
-                intent.putExtra("join_date", FacilityModel.getJoin_date());
-                startActivity(intent);
-                */
                 FacilityModel FacilityModel = lists.get(position);
                 Intent intent = new Intent(getActivity(), WeeklyMealMainActivity.class);
                 intent.putExtra("id", FacilityModel.getID());

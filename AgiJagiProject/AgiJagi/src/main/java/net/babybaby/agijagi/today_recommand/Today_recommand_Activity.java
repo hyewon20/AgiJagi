@@ -93,7 +93,6 @@ public class Today_recommand_Activity extends Fragment {
             @Override
             public void onClick(View v) {
                 startActivity(setPutExtra(intent, 0));
-
             }
         });
 
@@ -101,7 +100,6 @@ public class Today_recommand_Activity extends Fragment {
             @Override
             public void onClick(View v) {
                 startActivity(setPutExtra(intent, 1));
-
             }
         });
 
@@ -109,10 +107,8 @@ public class Today_recommand_Activity extends Fragment {
             @Override
             public void onClick(View v) {
                 startActivity(setPutExtra(intent, 2));
-
             }
         });
-
 
         return rootView;
     }

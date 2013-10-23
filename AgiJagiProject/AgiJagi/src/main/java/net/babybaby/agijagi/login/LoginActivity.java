@@ -87,6 +87,15 @@ public class LoginActivity extends Activity {
                 ed.putInt("type" , 2); // value : 저장될 값,
                 ed.commit(); // 필수! 이것을 안해주면 저장이 안되요!
 
+                try{
+                    MainViewThread mvt = new MainViewThread();
+                    mvt.start();
+                    mvt.join();
+
+                }catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+
                 Intent intent2 = new Intent(LoginActivity.this, MainActivity.class);
                 startActivity(intent2);
 
