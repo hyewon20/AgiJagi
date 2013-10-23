@@ -12,8 +12,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import net.babybaby.agijagi.R;
 import net.babybaby.agijagi.cooksearch.CookModel;
 import net.babybaby.agijagi.etc.HttpGetRequest;
@@ -105,6 +109,8 @@ public class WeeklyMealInfoFragment extends Fragment {
                         comments.add(comment);
                     }
 
+                    comments.add(new Comment("a",0,"a","a"));
+
                     mHandler.post(new Runnable() {
                         public void run() {
                             commentList.post(new Runnable() {
@@ -161,6 +167,9 @@ public class WeeklyMealInfoFragment extends Fragment {
                 {
                     v = vi.inflate(R.layout.row_meal_org_info,null);
                 }
+                else if(i==(comments.size())){
+                    v = vi.inflate(R.layout.row_comment_edit, null);
+                }
                 else
                 {
                     v = vi.inflate(R.layout.row_comment, null);
@@ -176,6 +185,18 @@ public class WeeklyMealInfoFragment extends Fragment {
                 org_name.setText(name);
                 org_address.setText(address);
                 org_telephone.setText(telephone);
+            }
+
+            else if(i==(comments.size())){
+                EditText et = (EditText)v.findViewById(R.id.comment_edit);
+                Button btn = (Button)v.findViewById(R.id.comment_btn);
+
+                btn.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Toast.makeText(getActivity(),"true!!",Toast.LENGTH_SHORT).show();
+                    }
+                });
             }
             else
             {
