@@ -23,16 +23,16 @@ import java.util.Calendar;
  */
 public class WeeklyMealMainActivity extends FragmentActivity {
 
-//    private SectionsPagerAdapter mSectionsPagerAdapter;
+//  private SectionsPagerAdapter mSectionsPagerAdapter;
     private ViewPager mViewPager;
     Handler mHandler = new Handler();
-    private ArrayList<ArrayList<MealData>> weeklyMeal=new ArrayList<ArrayList<MealData>>();
+    private ArrayList<ArrayList<MealData>> weeklyMeal = new ArrayList<ArrayList<MealData>>();
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_weekly_main);
 
-        Intent intent=getIntent();
+        Intent intent = getIntent();
         final int id=intent.getExtras().getInt("id");
         String name=intent.getExtras().getString("name");
         String address=intent.getExtras().getString("address");
@@ -105,9 +105,7 @@ public class WeeklyMealMainActivity extends FragmentActivity {
                             day_sw = 1;
                             meal.setDay("화요일");
                         }
-
                         weeklyMeal.get(day_sw).add(meal);
-
                     }
                     mHandler.post(new Runnable() {
                         public void run() {
@@ -165,6 +163,4 @@ public class WeeklyMealMainActivity extends FragmentActivity {
             ft.remove(fragment);
         }
     }
-
-
 }

@@ -31,13 +31,17 @@ public class WeeklyMealInfoFragment extends Fragment {
 
     private View rootView;
 
+    private boolean loading = true;
+
     private int id;
     private String name;
     private String address;
     private String telephone;
 
-    private ArrayList<Comment> comments=new ArrayList<Comment>();
+    private ArrayList<Comment> comments;
     private Handler mHandler = new Handler();
+    ListView commentList;
+    InfoListAdaptor infoListAdaptor;
 
     public WeeklyMealInfoFragment(int id, String name, String address, String telephone)
     {
@@ -47,17 +51,31 @@ public class WeeklyMealInfoFragment extends Fragment {
         this.telephone=telephone;
     }
 
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-    }
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         rootView = inflater.inflate(R.layout.activity_weekly_info, container, false);
 
-        final ListView commentList=(ListView)rootView.findViewById(R.id.meal_infolist);
-        commentList.setAdapter(new InfoListAdaptor(rootView.getContext(),R.layout.row_comment,comments));
+        comments = new ArrayList<Comment>();
+        commentList =(ListView)rootView.findViewById(R.id.meal_infolist);
+        infoListAdaptor = new InfoListAdaptor(getActivity(), R.layout.row_comment, comments);
+        commentList.setAdapter(infoListAdaptor);
 
+        init();
+        updateList();
+
+        return rootView;
+    }
+
+    public void init(){
+        infoListAdaptor.clear();
+        comments = new ArrayList<Comment>();
+        commentList = (ListView) rootView.findViewById(R.id.meal_infolist);
+        infoListAdaptor = new InfoListAdaptor(getActivity(), R.layout.row_comment, comments);
+        commentList.setAdapter(infoListAdaptor);
+
+    }
+
+    public void updateList(){
         new Thread() {
             public void run() {
                 try {
@@ -83,12 +101,18 @@ public class WeeklyMealInfoFragment extends Fragment {
 
                         Comment comment=new Comment(userId,userType,message,date);
                         Log.d("COMMENT","user_id: "+userId+"message: "+message);
+
                         comments.add(comment);
                     }
 
                     mHandler.post(new Runnable() {
                         public void run() {
-                            commentList.deferNotifyDataSetChanged();
+                            commentList.post(new Runnable() {
+                                public void run() {
+                                    infoListAdaptor.notifyDataSetChanged();
+                                    loading = true;
+                                }
+                            });
                         }
                     });
                 } catch (Exception e) {
@@ -96,9 +120,6 @@ public class WeeklyMealInfoFragment extends Fragment {
                 }
             }
         }.start();
-
-
-        return rootView;
     }
 
     private class InfoListAdaptor extends ArrayAdapter<Comment>
