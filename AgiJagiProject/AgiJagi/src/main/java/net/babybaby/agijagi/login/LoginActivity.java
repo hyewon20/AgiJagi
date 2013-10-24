@@ -45,6 +45,7 @@ public class LoginActivity extends Activity {
                 try{
                     Login.id = id_edittext.getText().toString();
                     Login.password = MD5.getMD5Hash(pw_edittext.getText().toString());
+                    Log.d("passhash",""+MD5.getMD5Hash(pw_edittext.getText().toString()+"babybaby"));
 
                     LoginThread worker = new LoginThread();
                     worker.start();
@@ -63,6 +64,7 @@ public class LoginActivity extends Activity {
                     SharedPreferences prefs = getSharedPreferences("user_info", MODE_PRIVATE);
                     SharedPreferences.Editor ed = prefs.edit();
                     ed.putString("password", Login.password);
+                    Log.d("password",""+Login.password);
                     ed.putString("id" , Login.id);
                     ed.putInt("type" , Login.get_type); // value : 저장될 값,
                     ed.putInt("og_id" , Login.og_id); // value : 저장될 값,
