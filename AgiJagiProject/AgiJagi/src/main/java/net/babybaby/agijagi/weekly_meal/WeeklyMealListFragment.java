@@ -77,6 +77,7 @@ public class WeeklyMealListFragment extends Fragment {
         return rootView;
     }
 
+    /*
     @Override
     public void onResume() {
         super.onResume();
@@ -90,6 +91,7 @@ public class WeeklyMealListFragment extends Fragment {
         mealListAdapter = new MealListAdapter(getActivity(), android.R.layout.simple_expandable_list_item_1, convertData);
         listView.setAdapter(mealListAdapter);
     }
+    */
 
     private class MealListAdapter extends ArrayAdapter<ListItem> {
         private ArrayList<ListItem> objects;
