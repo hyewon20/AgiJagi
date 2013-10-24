@@ -66,7 +66,7 @@ public class MainActivity extends Activity {
         if (usertype == 0) {
             mDrawerTitles = new String[]{"" + prefs.getString("id", "null")+"님 반갑습니다.", "메인화면", "공지사항", "레시피 검색", "영양사 검색","기관 검색", "로그아웃"};
         } else if (usertype == 1) {
-            mDrawerTitles = new String[]{"" + prefs.getString("og_name", "null")+"님 반갑습니다.", "메인화면", "공지사항", "주간식단 조회", "레시피 검색", "영양사 검색","기관 검색", "로그아웃"};
+            mDrawerTitles = new String[]{"" + prefs.getString("og_name", "null")+"님 반갑습니다.", "메인화면", "공지사항", "레시피 검색", "영양사 검색","기관 검색", "로그아웃"};
         } else if (usertype == 2) {
             mDrawerTitles = new String[]{"비회원님 환영합니다.", "메인화면", "공지사항", "레시피 검색", "영양사 검색","기관 검색","로그아웃"};
         }
@@ -204,26 +204,21 @@ public class MainActivity extends Activity {
                     break;
 
                 case 3:
-                    fragment = new Weekly_Meal_Activity(); //주간 식단 검색으로 교체
-                    fragmentManager.beginTransaction().replace(R.id.content_frame, fragment).commit();
-                    break;
-
-                case 4:
                     fragment = new Recipe_detail_Activity();
                     fragmentManager.beginTransaction().replace(R.id.content_frame, fragment).commit();
                     break;
 
-                case 5:
+                case 4:
                     fragment = new CookSearchFragment();
                     fragmentManager.beginTransaction().replace(R.id.content_frame, fragment).commit();
                     break;
 
-                case 6:
+                case 5:
                     fragment = new FacilitySearchFragment();
                     fragmentManager.beginTransaction().replace(R.id.content_frame, fragment).commit();
                     break;
 
-                case 7:
+                case 6:
                     Intent intent = new Intent(MainActivity.this, LoginActivity.class);
                     startActivity(intent);
                     break;
